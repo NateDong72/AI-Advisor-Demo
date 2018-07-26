@@ -1,0 +1,563 @@
+{% extends "base.html" %}
+
+{% block extra_css %}
+<!-- <script src="https://d3js.org/d3.v4.min.js"></script> -->
+<script src="{{ url_for('static', filename='js/d3.min.js')}}"></script>
+<script src="{{ url_for('static', filename='js/dimple.v2.3.0.min.js')}}"></script>
+<script src="{{ url_for('static', filename='js/Chart.min.js')}}"></script>
+{% endblock %}
+
+
+
+{% block sidebar %}
+{% endblock %}
+
+
+{% block content %}
+<div class="container-fluid">
+
+	<div class="row flex" style="height:91vh;">
+
+		<div class="new_sidebar py-3 " style="width: 4%;" id='sidebar01'>
+				<div class="ml-3 flex-column justify-content-space" style="" >
+					<div class='pt-1' id='donut_case01'></div>
+					<div class='pt-1' id='donut_case03'></div> <!-- Switched Num of Features to 2nd place by tianyou 24th May 2018-->			
+					<div class='pt-1' id='donut_case02'></div>
+					<!-- <div class='pt-1' id='donut_case04'></div>  removed percentage tagged circle by tianyou 24th May 2018-->
+				</div>
+		</div>
+
+		
+		<div class='modelbar ml-5 mr-0 pr-0 col-4 text-center' style="height: 100%;">
+
+			<div class="" style="height:63%;">
+				<H5 class="mt-3 h5">Feature Significance</H5>
+				<div class='' style="height: 90%; width:100%" id='bar_canvas_cont'></div>
+			</div>
+
+			<div class="" style="height:30%;">
+				<H5 class="h5 mt-0">Certainty Score</H5>
+				<div class='' style="height: 90%; width:100%" id='certainty_line_chart'></div>
+			</div>
+			
+		</div>
+
+
+		<div class='eventsheader mx-0 px-0 col-7 text-center' style="height: 100%;">
+			<H5 class="d-inline-block mt-3 h5">Company-Feature Values</H5>
+			<div class="d-flex flex-column float-right justify-content-center">
+				<img class="mt-4 mr-5" style="height:1.5rem;" src="{{ url_for('static', filename='images/posnegLegend.png') }}"/>
+			</div>
+			<div class='' style="height: 93%; width:100%" id='bubblebox_cont'></div>
+		</div>
+
+
+		
+
+
+	</div>
+</div>
+{% endblock %}
+
+
+{% block extra_js %}
+<script type="text/javascript">
+
+	//var pieSvgHeight = screen.height * 0.16;
+	var pieSvgHeight = document.getElementById('sidebar01').clientHeight * 0.17;
+	var pieSvgWidth = pieSvgHeight*0.85;
+	var pieTopOffset = pieSvgHeight * 0.01;
+	var pieLeftOffset = pieSvgWidth * 0.05;
+
+    var pie01data = [{'events':'followed', 'Value': 100},{'events':'not followed', 'Value': 0}]
+    var svg01 = dimple.newSvg("#donut_case01", pieSvgWidth, pieSvgHeight);
+    var pie01 = new dimple.chart(svg01, pie01data);
+    pie01.setBounds(pieLeftOffset, pieTopOffset, '90%', '90%')
+    pie01.addMeasureAxis("p", "Value");
+    var p1r = pie01.addSeries("events", dimple.plot.pie);
+      p1r.innerRadius = "70%";
+      pie01.defaultColors = [new dimple.color("#FFD42E", "#000000", 1), new dimple.color("#EBEBEB", "#000000", 0.7)];
+      pie01.draw(500);
+      p1r.afterDraw = function (shape, data) {
+      	var s = d3.select(shape)
+      	svg01.append('text')
+      		.attr("x", (pieSvgWidth-pieLeftOffset)/2)
+            .attr("y", pieSvgHeight/2- pieTopOffset)
+            .style("text-anchor", "middle")
+            .style("alignment-baseline", "middle")
+            .style("font-size", "30px")
+            .style("fill", "black")
+            .style("font-family", "sans-serif")
+            .style("opacity", 0.9)
+            .text("10");
+
+        svg01.append('text')
+      		.attr("x", pieSvgWidth/2)
+            .attr("y", pieSvgHeight+pieTopOffset*3)
+            .style("text-anchor", "middle")
+            .style("alignment-baseline", "text-after-edge")
+            .style("font-size", "1.3rem")
+            .style("font-weight", "bold")
+            .style("fill", "#CC474D")
+            .style("font-family", "sans-serif")
+            .style("opacity", 0.9)
+            .text("Cases");
+      }
+
+    var pie02data = [{'events':'followed', 'Value': 100},{'events':'not followed', 'Value': 0}]
+    var svg02 = dimple.newSvg("#donut_case02", pieSvgWidth, pieSvgHeight);
+    var pie02 = new dimple.chart(svg02, pie02data);
+    pie02.setBounds(pieLeftOffset, pieTopOffset, '90%', '90%')
+    pie02.addMeasureAxis("p", "Value");
+    var p2r = pie02.addSeries("events", dimple.plot.pie);
+      p2r.innerRadius = "70%";
+      pie02.defaultColors = [new dimple.color("#FFD42E", "#000000", 1), new dimple.color("#EBEBEB", "#000000", 0.7)];
+      pie02.draw(500);
+      p2r.afterDraw = function (shape, data) {
+      	svg02.append('text')
+      		.attr("x", (pieSvgWidth+pieLeftOffset)/2)
+            .attr("y", pieSvgHeight/2- pieTopOffset)
+            .style("text-anchor", "middle")
+            .style("alignment-baseline", "middle")
+            .style("font-size", "1.5rem")
+            .style("fill", "black")
+            .style("font-family", "sans-serif")
+            .style("opacity", 0.9)
+            .text("100%");
+
+        svg02.append('text')
+      		.attr("x", pieSvgWidth/2)
+            .attr("y", pieSvgHeight-pieTopOffset)
+            .style("text-anchor", "middle")
+            .style("alignment-baseline", "text-after-edge")
+            .style("font-size", "0.75rem")
+            .style("font-weight", "bold")
+            .style("fill", "#CC474D")
+            .style("font-family", "sans-serif")
+            .style("opacity", 0.9)
+            .text("Training Accuracy"); // Changed from "Agreements" by Tianyou 24th May 2018
+      }
+
+    var pie03data = [{'events':'followed', 'Value': 100},{'events':'not followed', 'Value': 0}]
+    var svg03 = dimple.newSvg("#donut_case03", pieSvgWidth, pieSvgHeight);
+    var pie03 = new dimple.chart(svg03, pie03data);
+    pie03.setBounds(pieLeftOffset, pieTopOffset, '90%', '90%')
+    pie03.addMeasureAxis("p", "Value");
+    var p3r = pie03.addSeries("events", dimple.plot.pie);
+      p3r.innerRadius = "70%";
+      pie03.defaultColors = [new dimple.color("#FFD42E", "#000000", 1), new dimple.color("#EBEBEB", "#000000", 0.7)];
+      pie03.draw(500);
+      p3r.afterDraw = function (shape, data) {
+      	var s = d3.select(shape)
+      	svg03.append('text')
+      		.attr("x", (pieSvgWidth-pieLeftOffset)/2)
+            .attr("y", pieSvgHeight/2- pieTopOffset)
+            .style("text-anchor", "middle")
+            .style("alignment-baseline", "middle")
+            .style("font-size", "1.5rem")
+            .style("fill", "black")
+            .style("font-family", "sans-serif")
+            .style("opacity", 0.9)
+            .text("26");
+
+        svg03.append('text')
+      		.attr("x", pieSvgWidth/2)
+            .attr("y", pieSvgHeight-pieTopOffset)
+            .style("text-anchor", "middle")
+            .style("alignment-baseline", "text-after-edge")
+            .style("font-size", "0.8rem")
+            .style("font-weight", "bold")
+            .style("fill", "#CC474D")
+            .style("font-family", "sans-serif")
+            .style("opacity", 0.9)
+            .text("Num. of Features");
+      }
+
+    
+	
+	d3.queue(2)
+		.defer(d3.csv, "{{ url_for('static', filename='data/Logistic regression.csv')}}")
+		//.defer(d3.csv, "{{ url_for('static', filename='data/Training Dataset Normalised.csv')}}")
+		//.defer(d3.csv, "{{ url_for('static', filename='data/Normalized.csv')}}")
+		.defer(d3.csv, "{{ url_for('static', filename='data/graph-input.csv')}}")
+		//.defer(d3.csv, "{{ url_for('static', filename='data/Training Dataset Output Row Normalised.csv')}}")
+		.defer(d3.csv,"{{ url_for('static', filename='data/Features.csv')}}")
+		.defer(d3.csv,"{{ url_for('static', filename='data/Pred prob.csv')}}")
+		.awaitAll(renderBubbleAndHBar);
+
+	//d3.csv("{{ url_for('static', filename='data/Logistic regression.csv')}}", function(error, regression_coeff) {
+	//d3.tsv("{{ url_for('static', filename='js/example_data.tsv')}}", function (error, data) {    	
+	function renderBubbleAndHBar(error, results) {
+			
+			var regression_coeff = results[0];
+			var bubbleTable = results[1]; // risk score manual concatenated in bubbletable
+			var features_csv = results[2];
+			var riskscore_csv = results[3];
+			//console.log(features_csv);
+
+			var reports = {}; // object for report names
+			var reportnode = {}; // to keep track of which node the report is at
+			var features = {};	// object of feature keys
+
+			var graph = {}; // init a graph object for the sankey. object has keys; 'nodes' and 'links'
+			graph['nodes'] = [];  // feature name is under 'label'
+			graph['links'] = [];
+			var nodenum = 0;  // to track until those report numbers
+
+
+			//1. update reports object, features object and reportnode object
+			features_csv.forEach(function(d,i){ // for each row, column: Report, Label, Feature, Sentence
+
+				d.Report = d.Report.replace('.pdf.txt_sent.csv','')//replace all trailed extensions in report name
+							.replace('.docx.txt_sent.csv','')
+							.replace('.pdf.sent.csv','')
+							.replace('MAS - ','')
+							.replace('Proposed changes to ','')
+							; 
+
+				if(d.Feature != ''){ // if Feature is not blank
+
+					if(d.Report in reports){ // if Report is in "reports" list
+						
+						if(d.Feature in reports[d.Report]){ // if the feature is available in the target report
+							reports[d.Report][d.Feature].push(d.Sentence); //add the sentence to the target feature
+							features[d.Feature] = 1;	// update "features" object with this feature key
+							reportnode[d.Report] = 1;	// update "reportnode" object with this report name
+						
+						}else{								// if feature not in target report
+							reports[d.Report][d.Feature] = [];  // init feature to blank array
+							reports[d.Report][d.Feature].push(d.Sentence); //push sentent to new array
+							features[d.Feature] = 1;			//update "features" object keys
+							reportnode[d.Report] = 1;			// update "reportnode" object key
+						};
+						
+					} else {
+						reports[d.Report] = {};				// if Report not in "reports" list, initialize report and run the same loop as above
+						if(d.Feature in reports[d.Report]){		
+							reports[d.Report][d.Feature].push(d.Sentence);
+							features[d.Feature] = 1;
+							reportnode[d.Report] = 1;
+						}else{
+							reports[d.Report][d.Feature] = [];
+							reports[d.Report][d.Feature].push(d.Sentence);
+							features[d.Feature] = 1;
+							reportnode[d.Report] = 1;
+						};
+					};
+				
+				}else if(d.Label !=''){				// if Feature blank //<== 23/05/2018 Tian you ask to count only salient sentences (sentence that have "Labels") as relevant sentences
+
+					if(d.Report in reports){ // if Report is in "reports" list
+						if('unlabelled' in reports[d.Report]){// if 'unlabelled' not in target report
+							
+							reports[d.Report]['unlabelled'].push(d.Sentence); //push sentent to new array
+							reportnode[d.Report] = 1;			// update "reportnode" object key
+						}else{
+							reports[d.Report]['unlabelled'] = [];  // init feature to blank array
+							reports[d.Report]['unlabelled'].push(d.Sentence); //push sentent to new array
+							reportnode[d.Report] = 1;			// update "reportnode" object key
+						};
+
+					} else {
+						reports[d.Report] = {};	// if Report not in "reports" list, initialize report and run the same loop as above
+						
+						if('unlabelled' in reports[d.Report]){// if 'unlabelled' not in target report
+							
+							reports[d.Report]['unlabelled'].push(d.Sentence); //push sentent to new array
+							reportnode[d.Report] = 1;			// update "reportnode" object key
+						}else{
+							reports[d.Report]['unlabelled'] = [];  // init feature to blank array
+							reports[d.Report]['unlabelled'].push(d.Sentence); //push sentent to new array
+							reportnode[d.Report] = 1;			// update "reportnode" object key
+						};
+					};
+
+
+				}
+
+
+
+				;
+			});
+
+			// update nodenum and graph.nodes with reports first
+			Object.keys(reports).forEach(function(k,i){
+				graph['nodes'].push({'node': i, 'name': k, 'label': k});
+				nodenum = i;
+			});
+
+			// update graph.nodes with freature nodes
+			Object.keys(features).sort().forEach(function(k,i){
+				//graph['nodes'].push({'node': nodenum + i + 1, 'name': 'F'+(i + 1)+": "+k, 'label': k});
+				graph['nodes'].push({'node': nodenum + i + 1, 'name': 'F'+(i + 1), 'label': k});
+			});
+
+			// update the feature node num to something after the nodenum
+			graph['nodes'].forEach(function(n) {
+				features[n.label] = n.node;
+			});
+
+
+			Object.keys(reports).forEach(function(r,i){	// for each REPORT
+				Object.keys(reports[r]).forEach(function(f,num){ // for each FEATURE in report
+					if(f !='unlabelled'){
+						graph['links'].push({'source':features[r], 'target':features[f], 'value': reports[r][f].length}); // Update graph link if not 'unlabelled'
+					}
+					
+				});
+			});
+
+			console.log("graph: ")
+			console.log(graph);
+
+			console.log("num of reports: "+(nodenum+1)) //nodenum is last node number of reports
+			console.log("reports: ")
+			console.log(reports);
+			console.log("features: ")
+			console.log(features);
+
+			var bubblePivoted = [];
+			//2. unpivot the table to long format
+			bubbleTable.forEach(function(d, i){ //for each row...
+				
+
+				Object.keys(d).forEach(function(k,n){ //for each column other than 'ID'			
+					if( k != 'ID'){
+						d[k] = parseFloat(d[k]);
+						var tempobj = {};
+						tempobj['Company'] = d['ID'];
+						tempobj['Feature'] = k;
+						
+						tempobj['Coeff. Direction'] = d[k] >= 0 ? 'Positive' : 'Negative';
+						tempobj['Value'] = Math.abs(d[k]);
+						//tempobj['Value'] = d[k];
+						tempobj['Outcome'] = d['Label'] == 1 ? 'Positive' : 'Negative';
+
+						//tempobj['Risk Score'] = parseFloat(d['Risk Score']);
+
+						if(parseInt(k.replace('F','')) <= 26){  // only push if k is an interger (a feature column)
+							bubblePivoted.push(tempobj);
+						};
+						
+					}else{
+						d['Company'] = d[k];
+					}
+					
+				});
+			});
+
+			var filteredRegress_Coeff = [];
+			//3. filter num of Fs
+	    	regression_coeff.forEach(function(d,i) {
+
+	    		// i. parse into numbers
+	    		if(d.Coefficient == ""){ // if value null, give it 0
+	    			d.Coefficient = 0
+	    		}else{
+	    			d.Coefficient = parseFloat(d.Coefficient);
+	    		}
+
+	    		// ii. filter for only those that start with 'F' and below 17
+	    		if(d.Feature.substring(0,1) == 'F' & parseInt(d.Feature.replace('F',''))<=26){
+	    			filteredRegress_Coeff.push(d);
+	    		}
+
+	    	});
+
+	    	
+	    	riskscore_csv.forEach(function(d,i){
+	    		d['Certainty Score'] = parseFloat(d['Certainty Score']);
+	    	});
+			
+	    	console.log('bubbleTable')
+			console.log(bubbleTable);
+			console.log('bubblePivoted')
+			console.log(bubblePivoted);
+			console.log(filteredRegress_Coeff);
+			console.log('risk score');
+			console.log(riskscore_csv);
+
+			// ===== Bar chart =====
+	    	var svg = dimple.newSvg("#bar_canvas_cont", '100%', '100%');
+	    	var myChart = new dimple.chart(svg, filteredRegress_Coeff);
+			      myChart.setBounds(75, '5%', '84%', '86%')
+			      var bar_x = myChart.addMeasureAxis("x", "Coefficient");
+			      bar_x.fontSize = '0.65rem';
+			      bar_x.title = 'Coefficient Values';
+			      var bar_y = myChart.addCategoryAxis("y", "Feature");
+			      bar_y.fontSize = '0.65rem';
+			      //bar_y.addOrderRule(["F1","F2","F3","F4","F5","F6","F7","F8","F9","F10","F11","F12","F13","F14","F15","F16","F17"]);
+			      bar_y.addOrderRule("Coefficient");
+			      bar_y.showGridlines = true;
+
+			      var bar_s = myChart.addSeries(null, dimple.plot.bar);
+			      myChart.defaultColors = [
+                                      // new dimple.color("#CC474D", null, 1), // blue
+							          new dimple.color("#6aff2e", null, 1), // blue
+							          new dimple.color("grey", "#2980b9", 1),
+      								];
+			      //myChart.addLegend(60, 10, 510, 20, "right");
+			      myChart.draw(500);
+			      //bar_y.gridlineShapes.selectAll("line").attr("stroke", "#FF0000");
+			      console.log('series');
+      			  console.log(bar_s);
+      			  bar_s.shapes
+      			 	.style("fill", function (d) { return (d.x >= 0 ? '#6aff2e' : "#CC474D")})
+      			 	.style("stroke", "#000000");
+			
+
+			// ===== Certainty Chart =====
+			//Create and Position a Chart
+			var svg = dimple.newSvg('#certainty_line_chart', '100%', '100%');
+			var certaintyChart = new dimple.chart(svg, riskscore_csv);
+			certaintyChart.setBounds(75, '5%', '84%', '65%');
+			var x = certaintyChart.addCategoryAxis("x", "Company")
+			x.fontSize = '0.75rem';
+			var yaxis = certaintyChart.addMeasureAxis("y", "Certainty Score");
+            yaxis.fontSize = '0.65rem';
+
+			// Min price will be green, middle price yellow and max red
+			certaintyChart.addColorAxis("Certainty Score", ["red", "yellow", "green"]);
+			//certaintyChart.addColorAxis("Risk Score", ["green", "yellow", "red"]);
+			// Add a thick line with markers
+			var lines = certaintyChart.addSeries(null, dimple.plot.line);
+			lines.lineWeight = 3;
+			lines.lineMarkers = true;
+			// Draw the chart
+
+			certaintyChart.draw();
+
+			console.log('chart bounds')
+			console.log(certaintyChart);
+			console.log(svg.node().getBoundingClientRect());
+			console.log(yaxis.shapes.node().getBoundingClientRect());
+
+			console.log(yaxis.shapes.selectAll('.tick').nodes()[7].getBoundingClientRect()); //0.7
+			console.log(yaxis.shapes.selectAll('.tick').nodes()[3].getBoundingClientRect()); //0.3
+
+			var highlightbox_x = certaintyChart.x;
+			var highlightbox_y = yaxis.shapes.selectAll('.tick').nodes()[6].getBoundingClientRect().y - svg.node().getBoundingClientRect().y;
+			var highlightbox_height = yaxis.shapes.selectAll('.tick').nodes()[4].getBoundingClientRect().y - yaxis.shapes.selectAll('.tick').nodes()[6].getBoundingClientRect().y;
+
+			svg.append('rect')
+				.attr("x", highlightbox_x)
+				.attr("y",highlightbox_y+6)
+				.attr("width", svg.node().getBoundingClientRect().width * 0.84)
+				.attr("height", highlightbox_height)
+				//.attr("fill", "#CC474D")
+				.attr("fill", "yellow")
+				.attr('opacity',0.2)
+				;
+
+
+
+			// ===== Bubble Chart =====
+			var svg = dimple.newSvg('#bubblebox_cont', '100%', '100%');
+	        var bubbleChart = new dimple.chart(svg, bubblePivoted);
+	        bubbleChart.setBounds("10%", "3%", '84%', '88%')
+	        var bub_x = bubbleChart.addCategoryAxis("x", "Feature"); // changed x to y 15th May 2018
+	        bub_x.fontSize = '0.65rem';
+	        bub_x.title = 'Features'
+	        bub_x.showGridlines = true;
+	        bub_x.addOrderRule(["F1","F2","F3","F4","F5","F6","F7","F8","F9","F10","F11","F12","F13","F14","F15","F16","F17"]);
+
+
+	        var bub_y = bubbleChart.addCategoryAxis("y", "Company"); // changed y to x 15th May 2018
+	        bub_y.fontSize = '0.75rem';
+	        //bub_y.addOrderRule(["company07","company06","company09","company10","company04","company05","company02","company03","company08","company01"]);
+	        bub_y.addOrderRule(["company01","company08","company03","company02","company05","company04","company10","company09","company06","company07"]);
+
+	        var z = bubbleChart.addMeasureAxis("z", "Value");
+
+	        //z.overrideMin = 0;
+	        var maxValue = Math.max.apply(Math,bubblePivoted.map(function(o){return o.Value;}));
+	        console.log('max value');
+	        console.log(maxValue);
+	        z.overrideMax = maxValue*4;
+	        //console.log(z);//.overrideMax = 30000;
+	        var bub_series = bubbleChart.addSeries('Coeff. Direction', dimple.plot.bubble);
+	        //bubbleChart.addSeries('Outcome', dimple.plot.bubble);
+	        
+	        //bubbleChart.defaultColors = [new dimple.color("#C2E58C", "#000000", 1),
+			//				          new dimple.color("#CC474D", null, 0.7)];
+            // bubbleChart.defaultColors = [new dimple.color("#C3DCEF", "#000000", 1), //blue
+			bubbleChart.defaultColors = [new dimple.color("#6aff2e", "#000000", 1), //blue
+							          new dimple.color("#CC474D", null, 0.7)];  //red
+	        //bubbleChart.addLegend(50, 10, 150, 20, "left"); // 23/05/2018 Tian You moved legend up
+	        bubbleChart.draw(500);
+
+			// Setting axis format AFTER draw will only affect tooltips.  Setting it before draw
+			// will affect tooltips and the axis drawing itself.
+	        z.tickFormat = ",.2f";
+	        console.log('bub series');
+	        console.log(bub_series.shapes);
+	        
+	        // REMOVE ALL CIRCLES THAT ACTUALLY HAVE ZERO VALUE // 23 May 2018 Tian You discussion
+	        bub_series.afterDraw = function (shape, data){
+	        	//console.log(data.z);
+	        	if(data.z == 0){ d3.select(shape).remove();}
+	        };
+
+	        console.log('bubble axis')
+	        bub_y.shapes.selectAll('.tick>text')
+	        			.attr('font-weight','bold')
+	        			.attr('fill',function(d){
+						        	//return ['M1','C&G', 'OLAM'].indexOf(d) >= 0 ?  'red' : 'green';
+						        	return ['company08','company09', 'company10'].indexOf(d) >= 0 ?  'red' : 'green'; // change for masking companies 06/06/2018
+						        });
+
+	        // Count untagged Sents
+			var untaggedSents = 0;
+			var totalSents = 0;
+			Object.keys(reports).forEach(function(r){
+				Object.keys(reports[r]).forEach(function(f){
+					reports[r][f].forEach(function(s){
+						if(f=='unlabelled'){
+							untaggedSents +=1;
+						}
+						totalSents +=1;
+					});
+				});
+			});
+
+			//document.getElementById('tag_untag_ratio').innerHTML = untaggedSents + "/" + totalSents + ' ('+(untaggedSents/totalSents * 100).toFixed(2)+'%)';
+
+			/*
+	        var pie04data = [{'events':'followed', 'Value': 100},{'events':'not followed', 'Value': 0}]
+		    var svg04 = dimple.newSvg("#donut_case04", pieSvgWidth, pieSvgHeight);
+		    var pie04 = new dimple.chart(svg04, pie04data);
+		    pie04.setBounds(pieLeftOffset, pieTopOffset, '90%', '90%')
+		    pie04.addMeasureAxis("p", "Value");
+		    var p4r = pie04.addSeries("events", dimple.plot.pie);
+		      p4r.innerRadius = "70%";
+		      pie04.defaultColors = [new dimple.color("#FFD42E", "#000000", 1), new dimple.color("#EBEBEB", "#000000", 0.7)];
+		      pie04.draw(500);
+		      p4r.afterDraw = function (shape, data) {
+		      	var s = d3.select(shape)
+		      	svg04.append('text')
+		      		.attr("x", (pieSvgWidth+pieLeftOffset)/2)
+		            .attr("y", pieSvgHeight/2- pieTopOffset)
+		            .style("text-anchor", "middle")
+		            .style("alignment-baseline", "middle")
+		            .style("font-size", "1.2rem")
+		            .style("fill", "black")
+		            .style("font-family", "sans-serif")
+		            .style("opacity", 0.9)
+		            .text((untaggedSents/totalSents * 100).toFixed(2)+'%');
+
+		        svg04.append('text')
+		      		.attr("x", pieSvgWidth/2)
+		            .attr("y", pieSvgHeight-pieTopOffset)
+		            .style("text-anchor", "middle")
+		            .style("alignment-baseline", "baseline")
+		            .style("font-size", "0.7rem")
+		            .style("font-weight", "bold")
+		            .style("fill", "#CC474D")
+		            .style("font-family", "sans-serif")
+		            .style("opacity", 0.9)
+		            .text("Percentage Untagged");
+		      }
+			*/
+	};
+</script>
+{% endblock %}

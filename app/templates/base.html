@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>ACCENTURE AI Expert Advisor</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <!-- bootstrap css -->
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap.min.css') }}"/>
+
+  <!-- bootstrap js-->
+  <script src="{{ url_for('static', filename='js/jquery-3.3.1.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/popper.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+  
+  <!-- our own css -->
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style2.css') }}"/>
+  
+  {% block extra_css %}{% endblock %}
+
+</head>
+<body>
+
+<nav class="navbar sticky-top navbar-expand-sm box-shadow py-0" style="padding: 0.5rem 1rem!important;">
+  <div class="navbar-brand py-0">AI EXPERT ADVISOR</div>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="collapsibleNavbar">
+    <ul class="navbar-nav ml-3 h5">
+      <li class="nav-item">
+        <a class="nav-link text-light" href="{{ url_for('index') }}">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link text-light" href="{{ url_for('annotations') }}">Learn</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link text-light" href="{{ url_for('reports') }}">Associations</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link text-light" href="{{ url_for('events') }}">Predict</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link text-light" href="{{ url_for('models') }}">Predictors</a>
+      </li>   
+    </ul>
+    <!-- Accenture Logo -->
+    <a  class= 'accentureicon' href="{{ url_for('index') }}"> <img height="100%" src="{{ url_for('static', filename='images/accenturelogo.svg') }}" /></a>
+  </div> 
+</nav>
+
+
+{% block sidebar %}{% endblock %}
+{% block content %}{% endblock %}
+
+
+
+</body>
+{% block extra_js %}{% endblock %}
+</html>

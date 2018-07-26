@@ -1,0 +1,613 @@
+{% extends "base.html" %}
+
+{% block extra_css %}
+<script src="{{ url_for('static', filename='js/d3.min.js')}}"></script>
+<script src="{{ url_for('static', filename='js/sankey.js')}}"></script>
+{% endblock %}
+
+
+
+{% block sidebar %}
+<!-- <div class="leftnavbar">
+</div> -->
+{% endblock %}
+
+
+{% block content %}
+
+<!-- <div class="container-fluid side_affected_content" style="margin-top:30px"> -->
+<div class="container-fluid" style="margin-top:30px">  
+  <div class="row flex">
+    
+    <div class="col-6">
+    	<div class="ml-5"> <!-- div to keep margin without affecting layout grids -->
+    		<h2 class="text-left h4">Report-to-Feature Associations</h2>
+			<div class="d-flex justify-content-start"><div class="mr-5 h10"># of Reports: <span id="num_reports">88</span></div><div class="h10"># of Features: <span id="num_features">88</span></div></div>
+			<div class="h10"># of Untagged Salient Sentences: <span id="tag_untag_ratio">888</span></div>
+			<hr>
+			<div class = leftbox id='sankeySVG'></div>
+    	</div>
+    </div>
+
+    <!-- <div class="col-5"> -->
+    <div class="col-6">
+		<div class="mr-5"> <!-- div to keep margin without affecting layout grids --> 
+	      <h2 class="h4">Salient Sentence Collections</h2>
+	      <div class="d-flex justify-content-start"><div class="mr-5 h10"># of Selected Sentences in Report: <span id="num_tagged_sent"></span></div>
+	      <!-- <div class="h10"># of UnFeatured Sentences: <span id="num_untagged_sent"></span></div> -->
+	  		</div>
+	      <div class="h10"># of Untagged Sentences in Report: <span id="per_tagged"></span></div>
+	      <hr>
+	      <div class = rightbox id='tagslist'></div>
+	    </div>
+    </div>
+
+  </div>
+
+</div>
+
+{% endblock %}
+
+
+{% block extra_js %}
+<script>	
+	var units = "Widgets";
+
+	//console.log(parseInt(getComputedStyle(document.getElementById('sankeySVG')).width,10));
+	// set the dimensions and margins of the graph
+	var margin = {top: 10, right: 30, bottom: 10, left: 10},	
+	    width =  parseInt(getComputedStyle(document.getElementById('sankeySVG')).width,10) - margin.left - margin.right,
+	    height = parseInt(getComputedStyle(document.getElementById('sankeySVG')).height,10) - margin.top - margin.bottom;
+		//window.innerHeight*0.8
+	// format variables
+	var formatNumber = d3.format(",.0f"),    // zero decimal places
+	    format = function(d) { return formatNumber(d) + " " + units; },
+	    color = d3.scaleOrdinal(d3.schemeCategory20);
+
+	// append the svg object to the body of the page
+	var svg = d3.select("#sankeySVG").append("svg")
+	    .attr("width", width + margin.left + margin.right)
+	    .attr("height", height + margin.top + margin.bottom)
+	  .append("g")
+	    .attr("transform", 
+	          "translate(" + margin.left + "," + margin.top + ")");
+
+	// Set the sankey diagram properties
+	var sankey = d3.sankey()
+	    .nodeWidth(36)
+	    .nodePadding(40)
+	    .size([width, height]);
+
+	var path = sankey.link();
+
+	// load the data
+	// 1. forEach featurescsv; Get a list of report names under "reports", list of "features"
+	// add tagged sentence to report
+
+	// 2. forEach reports; update graph['nodes'] with their numbers
+	// 3. forEach features; carry on update graph['nodes'] with their index starting from 'nodenum'
+	// feature name is under 'label' in graph['nodes']
+	// 4. forEach reports, feature; update the graph['links'] if it is not under 'unlabelled' features
+
+	// 5. 
+
+	d3.csv("{{ url_for('static', filename='data/Features.csv')}}", function(error, features_csv) {
+		//console.log(features_csv);
+		var reports = {}; // object for report names
+		var reportnode = {}; // to keep track of which node the report is at
+		var features = {};	// object of feature keys
+
+		var graph = {}; // init a graph object for the sankey. object has keys; 'nodes' and 'links'
+		graph['nodes'] = [];  // feature name is under 'label'
+		graph['links'] = [];
+		var nodenum = 0;  // to track until those report numbers
+
+
+		// update reports object, features object and reportnode object
+		features_csv.forEach(function(d,i){ // for each row, column: Report, Label, Feature, Sentence
+
+			d.Report = d.Report.replace('.pdf.txt_sent.csv','')//replace all trailed extensions in report name
+						.replace('.docx.txt_sent.csv','')
+						.replace('.pdf.sent.csv','')
+						.replace('MAS - ','')
+						.replace('Proposed changes to ','')
+						; 
+
+			if(d.Feature != ''){ // if Feature is not blank
+
+				if(d.Report in reports){ // if Report is in "reports" list
+					
+					if(d.Feature in reports[d.Report]){ // if the feature is available in the target report
+						reports[d.Report][d.Feature].push(d.Sentence); //add the sentence to the target feature
+						features[d.Feature] = 1;	// update "features" object with this feature key
+						reportnode[d.Report] = 1;	// update "reportnode" object with this report name
+					
+					}else{								// if feature not in target report
+						reports[d.Report][d.Feature] = [];  // init feature to blank array
+						reports[d.Report][d.Feature].push(d.Sentence); //push sentent to new array
+						features[d.Feature] = 1;			//update "features" object keys
+						reportnode[d.Report] = 1;			// update "reportnode" object key
+					};
+					
+				} else {
+					reports[d.Report] = {};				// if Report not in "reports" list, initialize report and run the same loop as above
+					if(d.Feature in reports[d.Report]){		
+						reports[d.Report][d.Feature].push(d.Sentence);
+						features[d.Feature] = 1;
+						reportnode[d.Report] = 1;
+					}else{
+						reports[d.Report][d.Feature] = [];
+						reports[d.Report][d.Feature].push(d.Sentence);
+						features[d.Feature] = 1;
+						reportnode[d.Report] = 1;
+					};
+				};
+			
+			}else if(d.Label !=''){				// if Feature blank //<== 23/05/2018 Tian you ask to count only salient sentences (sentence that have "Labels") as relevant sentences
+
+				if(d.Report in reports){ // if Report is in "reports" list
+					if('unlabelled' in reports[d.Report]){// if 'unlabelled' not in target report
+						
+						reports[d.Report]['unlabelled'].push(d.Sentence); //push sentent to new array
+						reportnode[d.Report] = 1;			// update "reportnode" object key
+					}else{
+						reports[d.Report]['unlabelled'] = [];  // init feature to blank array
+						reports[d.Report]['unlabelled'].push(d.Sentence); //push sentent to new array
+						reportnode[d.Report] = 1;			// update "reportnode" object key
+					};
+
+				} else {
+					reports[d.Report] = {};	// if Report not in "reports" list, initialize report and run the same loop as above
+					
+					if('unlabelled' in reports[d.Report]){// if 'unlabelled' not in target report
+						
+						reports[d.Report]['unlabelled'].push(d.Sentence); //push sentent to new array
+						reportnode[d.Report] = 1;			// update "reportnode" object key
+					}else{
+						reports[d.Report]['unlabelled'] = [];  // init feature to blank array
+						reports[d.Report]['unlabelled'].push(d.Sentence); //push sentent to new array
+						reportnode[d.Report] = 1;			// update "reportnode" object key
+					};
+				};
+
+
+			}
+
+
+
+			;
+
+		});
+
+		// update nodenum and graph.nodes with reports first
+		Object.keys(reports).forEach(function(k,i){
+			graph['nodes'].push({'node': i, 'name': k, 'label': k});
+			nodenum = i;
+		});
+
+		// update graph.nodes with freature nodes
+		Object.keys(features).sort().forEach(function(k,i){
+			//graph['nodes'].push({'node': nodenum + i + 1, 'name': 'F'+(i + 1)+": "+k, 'label': k});
+			graph['nodes'].push({'node': nodenum + i + 1, 'name': 'F'+(i + 1), 'label': k});
+		});
+
+		// update the feature node num to something after the nodenum
+		graph['nodes'].forEach(function(n) {
+			features[n.label] = n.node;
+		});
+
+
+		Object.keys(reports).forEach(function(r,i){	// for each REPORT
+			Object.keys(reports[r]).forEach(function(f,num){ // for each FEATURE in report
+				if(f !='unlabelled'){
+					graph['links'].push({'source':features[r], 'target':features[f], 'value': reports[r][f].length}); // Update graph link if not 'unlabelled'
+				}
+				
+			});
+		});
+
+		//var num_of_reports = document.getElementById('num_reports').innerHTML;
+		document.getElementById('num_reports').innerHTML = Object.keys(reports).length;
+
+		//var num_of_features = document.getElementById('num_features');
+		document.getElementById('num_features').innerHTML = Object.keys(features).length - nodenum -1;
+
+		// Count untagged Sents
+		var untaggedSents = 0;
+		var totalSents = 0;
+		Object.keys(reports).forEach(function(r){
+			Object.keys(reports[r]).forEach(function(f){
+				reports[r][f].forEach(function(s){
+					if(f=='unlabelled'){
+						untaggedSents +=1;
+					}
+					totalSents +=1;
+				});
+			});
+		});
+
+		document.getElementById('tag_untag_ratio').innerHTML = untaggedSents + "/" + totalSents + ' ('+(untaggedSents/totalSents * 100).toFixed(2)+'%)';
+		//console.log(num_of_reports)
+		//console.log(num_of_features);
+
+		console.log("graph: ")
+		console.log(graph);
+
+		console.log("num of reports: "+(nodenum+1)) //nodenum is last node number of reports
+		console.log("reports: ")
+		console.log(reports);
+		console.log("features: ")
+		console.log(features);
+
+		//console.log(reports['AIM']['Index'].length);
+
+
+
+		sankey
+		  .nodes(graph.nodes)
+		  .links(graph.links)
+		  .layout(32);
+
+		// add in the links
+		var link = svg.append("g").selectAll(".link")
+					  .data(graph.links)
+					.enter().append("path")
+					  .attr("class", "link")
+					  .attr("id", function(d){ return "node_"+d.source.node+"to"+"node_"+d.target.node;})
+					  .attr("d", path)
+					  .style("stroke-width", function(d) { return Math.max(1, d.dy); })
+					  .on("click", function(d){
+					  		//console.log(d)
+					  		var selector = d3.select(this);
+							//selector.classed("selected", !selector.classed("selected"));
+							//d3.select(this).classed("selected", true);
+							var selectedObjects = updateSelectors(d, selector);
+					  	})
+					  .sort(function(a, b) { return b.dy - a.dy; });
+
+		// add the link titles
+		link.append("title")
+		    .text(function(d) {
+				return d.source.name + " → " + 
+		            d.target.name + "\n" + format(d.value); });
+
+		// add in the nodes
+		var node = svg.append("g").selectAll(".node")
+					  .data(graph.nodes)
+					.enter().append("g")
+					  .attr("class", "node")
+					  .attr("id", function(d){ return "node_"+d.node;})
+					  .attr("transform", function(d) { 
+						  return "translate(" + d.x + "," + d.y + ")"; })
+					  .call(d3.drag()
+					    .subject(function(d) {
+					      return d;
+					    })
+					    .on("start", function(d) {
+
+					    	var selector = d3.select(this);
+							//selector.classed("selected", !selector.classed("selected"));
+							//d3.select(this).classed("selected", true);
+							var selectedObjects = updateSelectors(d, selector);
+					       	renderSentences(d, selector, selectedObjects['reportnodes'],selectedObjects['featurenodes'],selectedObjects['linknodes']);
+					      	this.parentNode.appendChild(this);
+					    })
+					    .on("drag", dragmove))
+					  
+					  ;
+
+		// add the rectangles for the nodes
+		node.append("rect")
+			  .attr("height", function(d) { return d.dy; })
+			  .attr("width", sankey.nodeWidth())
+			  .style("fill", function(d) { 
+			  		
+			  		if(d.node>nodenum){
+			  			var specColor = color(d.name.replace(/ .*/, ""));
+			  		}else{
+			  			//var specColor = '#9FCAE8' //blue
+			  			var specColor = '#084B89'
+			  		}
+			  		
+				  	return d.color = specColor ;})
+			  .style("stroke", function(d) { 
+				  return d3.rgb(d.color).darker(2); })
+			.append("title")
+			  .text(function(d) { 
+				  return d.name + "\n" + format(d.value); });
+
+		// add in the title for the nodes
+		node.append("text")
+			  .attr("x", -6)
+			  .attr("y", function(d) { return d.dy / 2; })
+			  .attr("dy", ".35em")
+			  .attr("text-anchor", "end")
+			  .attr("transform", null)
+			  .text(function(d) { return d.name; })
+			.filter(function(d) { return d.x < width / 2; })
+			  .attr("x", 6 + sankey.nodeWidth())
+			  .attr("text-anchor", "start");
+
+		d3.select("#node_0").attr('tabindex',88);
+		var temp_selectedObjects = updateSelectors(null, d3.select("#node_0"));
+		renderSentences(null, d3.select("#node_0"), temp_selectedObjects['reportnodes'],temp_selectedObjects['featurenodes'],temp_selectedObjects['linknodes']);
+		$("#node_0").focus();
+		// the function for moving the nodes
+		function dragmove(d) {
+
+			//console.log(d);
+
+			d3.select(this).attr("transform", 
+			    "translate(" + (
+			        d.x = Math.max(0, Math.min(width - d.dx, d3.event.x))
+			    )
+			    + "," + (
+			        d.y = Math.max(0, Math.min(height - d.dy, d3.event.y))
+			    ) + ")");
+			sankey.relayout();
+			link.attr("d", path);
+		}
+
+
+		function updateSelectors(d, selector){
+				
+			// Select the node first
+				selector.classed("selected", !selector.classed("selected"));
+
+			// CHECK WHAT ARE THE NODES SELECTED
+				//selector.classed("selected", !selector.classed("selected"));
+				// get all selected nodes
+				var allselectednodes = d3.selectAll(".selected").data();
+				//console.log(allselectednodes);
+				// list all report nodes, links and feature nodes selected
+				var reportnodes = [];
+				var featurenodes = [];
+				var linknodes = [];
+
+				var reportnode_num = [];
+				var featurenode_num = [];
+
+				// if there are more than 1 selected object, then update the nodes lists
+			    if(allselectednodes.length >= 1){
+
+			    	allselectednodes.forEach(function(nodeObj){
+			    		
+			    		if(nodeObj.node != undefined){ // if the nodeObject is not a link
+
+			    			if(nodeObj.node<=nodenum){
+				    			reportnodes.push(nodeObj.label);
+				    			reportnode_num.push(nodeObj.node);
+				    			//reportnodes[nodeObj.label] = 1; 
+				    		} else {
+				    			featurenodes.push(nodeObj.label);
+				    			featurenode_num.push(nodeObj.node);
+				    			//featurenodes[nodeObj.label] = 1;
+				    		}
+
+			    		}else{
+			    				linknodes.push("node_"+nodeObj.source.node+"to"+"node_"+nodeObj.target.node);
+			    		}
+			    		
+			    	});
+
+			    }
+
+
+			    
+			    //unselect all link nodes first
+			    if(linknodes.length>=1){
+			    	linknodes.forEach(function(l){
+			    		d3.select('#'+l).classed("selected", false);
+			    	});
+			    }
+
+			    if(reportnode_num.length>=1 & featurenode_num.length>=1){
+			    	reportnode_num.forEach(function(r){
+			    		featurenode_num.forEach(function(f){
+			    			d3.select('#'+"node_"+r+"to"+"node_"+f).classed("selected",true);
+			    		});
+			    	});
+			    }
+
+			    /*
+			    
+			    if(reportnode_num.length<1){  // if there is no report selected
+
+			    	if(selector.node().getAttribute("class").split(' ')[0] == 'node'){ 		// if selected a report or feature
+			    			//do nothing and let the bottom function select the node
+			    		}else if(selector.node().getAttribute("class").split(' ')[0] == 'link'){ // if selected a link
+
+				    			var sourcenode = selector.node().id.split('to')[0];
+				    			var targetnode = selector.node().id.split('to')[1];
+				    			d3.select('#'+sourcenode).classed("selected", !selector.classed("selected"));
+				    			
+				    			if(d3.select('#'+targetnode).classed("selected")){
+
+				    			}else{
+				    				d3.select('#'+targetnode).classed("selected", !selector.classed("selected"));
+				    			}
+
+			    		}								
+
+
+			    }else if (reportnode_num.length==1){
+
+			    	if(selector.node().getAttribute("class").split(' ')[0] == 'node'){ 		// if selected a report or feature
+			    			
+			    			// if the report node is different from what is selected
+			    			if(selector.node().id.split('_')<=nodenum & selector.node().id != reportnode_num[0]){
+
+			    			}
+
+			    		}else if(selector.node().getAttribute("class").split(' ')[0] == 'link'){ // if selected a link
+
+				    			var sourcenode = selector.node().id.split('to')[0];
+				    			var targetnode = selector.node().id.split('to')[1];
+				    			d3.select('#'+sourcenode).classed("selected", !selector.classed("selected"));
+				    			
+				    			if(d3.select('#'+targetnode).classed("selected")){
+
+				    			}else{
+				    				d3.select('#'+targetnode).classed("selected", !selector.classed("selected"));
+				    			}
+
+			    		}	
+
+			    }
+
+				*/
+
+			    //console.log(selector.node().getAttribute("class").split(' ')[0]);
+			    //selector.classed("selected", !selector.classed("selected"));
+
+				var allselectednodes = d3.selectAll(".selected").data();
+				//console.log(allselectednodes);
+				// list all report nodes, links and feature nodes selected
+				var reportnodes = [];
+				var featurenodes = [];
+				var linknodes = [];
+
+				// if there are more than 1 selected object, then update the nodes lists
+			    if(allselectednodes.length >= 1){
+
+			    	allselectednodes.forEach(function(nodeObj){
+			    		
+			    		if(nodeObj.node != undefined){ // if the nodeObject is not a link
+
+			    			if(nodeObj.node<=nodenum){
+				    			reportnodes.push(nodeObj.label);
+				    			reportnode_num.push(nodeObj.node);
+				    			//reportnodes[nodeObj.label] = 1; 
+				    		} else {
+				    			featurenodes.push(nodeObj.label);
+				    			featurenode_num.push(nodeObj.node);
+				    			//featurenodes[nodeObj.label] = 1;
+				    		}
+
+			    		}else{
+			    				linknodes.push("node_"+nodeObj.source.node+"to"+"node_"+nodeObj.target.node);
+			    		}
+			    		
+			    	});
+
+			    }
+
+			    //console.log(reportnodes);
+			    //console.log(featurenodes);
+			    return {'reportnodes': reportnodes,'featurenodes': featurenodes,'linknodes': linknodes}
+		};
+		// function to generate sentence cards based on clicked node.
+		function renderSentences(d, selector, reportnodes, featurenodes, linknodes) {
+			    
+			    // Select sentence container
+			    var toAdd = document.getElementById('tagslist');
+	    		//remove all previous child nodes for rerender
+	    		while (toAdd.firstChild) {
+				    toAdd.removeChild(toAdd.firstChild);
+				};
+
+				// Count untagged Sents
+				var taggedSents = 0;
+				var totalunlabelledSents = 0;
+				var totalSents = 0;
+				
+				//document.getElementById('tag_untag_ratio').innerHTML = untaggedSents + "/" + totalSents + ' ('+(untaggedSents/totalSents * 100).toFixed(2)+'%)';
+			    // Only if 1 report selected, then render the features selected. 
+			    if(reportnodes.length == 1){
+
+			    	// Get total sents for that report
+			    	Object.keys(reports[reportnodes[0]]).forEach(function(f){
+			    		reports[reportnodes[0]][f].forEach(function(){
+			    			totalSents +=1;
+			    		});
+			    	});
+
+			    	// if there are 1 or more features selected
+			    	if(featurenodes.length >=1){
+			    		//console.log(featurenodes);
+			    		featurenodes.forEach(function(feature, i){
+			    			//console.log(reports[reportnodes[0]][feature]);
+
+			    			//Check to see if node is connected to feature
+			    			if(feature in reports[reportnodes[0]]){
+			    				
+			    				//console.log("key in object");
+
+			    				//Iterate through sentences in feature of report to render
+				    			reports[reportnodes[0]][feature].forEach(function(sentence, n){
+				    				taggedSents +=1;
+
+				    				var newDiv = document.createElement('div');
+							    		newDiv.id = 'cs_'+n;
+										newDiv.className = 'candidate_sentence card py-2 px-4';
+
+									var header = document.createElement('h6');
+									var sent = document.createElement('div');
+									
+										header.textContent = "F"+(features[feature]-nodenum) + ": "+feature;
+										header.className = 'card-title mb-1';
+										sent.textContent = sentence
+										sent.className = 'card-text';
+										newDiv.appendChild(header);
+										newDiv.appendChild(sent);
+										toAdd.appendChild(newDiv);
+
+
+				    			});
+
+			    			}else{
+
+			    				console.log(feature+" not in "+reportnodes[0]);
+		    					var newDiv = document.createElement('div');
+						    		//newDiv.id = 'r_na';
+									newDiv.className = 'candidate_sentence  py-2 px-4';
+									newDiv.textContent = "'F"+(features[feature]-nodenum) + ": "+feature+"' feature not in '"+reportnodes[0]+"' report";
+									toAdd.appendChild(newDiv);
+			    			}
+			    			
+
+			    			
+			    		});
+
+			    	} else { // if only the report selected
+
+			    		reports[reportnodes[0]]['unlabelled'].forEach(function(unlablled_sent, n){
+			    			//console.log(unlablled_sent);
+			    			var newDiv = document.createElement('div');
+							    		newDiv.id = 'ul_'+n;
+										newDiv.className = 'unlabelled_sentence card  py-2 px-4';
+
+							var header = document.createElement('h6');
+							var sent = document.createElement('div');
+							
+								header.textContent = "Unlablled Sentence";
+								header.className = 'card-title mb-1';
+								sent.textContent = unlablled_sent
+								sent.className = 'card-text';
+								newDiv.appendChild(header);
+								newDiv.appendChild(sent);
+								toAdd.appendChild(newDiv);
+
+			    		});
+			    	}
+
+			    }
+
+			    document.getElementById('num_tagged_sent').innerHTML = taggedSents;
+			    //document.getElementById('num_untagged_sent').innerHTML = totalSents - taggedSents;  //changed by Tian You 24th May 2018
+			    //document.getElementById('per_tagged').innerHTML = '('+(taggedSents/totalSents * 100).toFixed(2) + '%)';
+			    
+			    if(reportnodes.length == 1){
+			    	totalunlabelledSents = reports[reportnodes[0]]['unlabelled'].length;
+			    	document.getElementById('per_tagged').innerHTML = totalunlabelledSents+'/'+totalSents+'('+(totalunlabelledSents/totalSents * 100).toFixed(2) + '%)';
+			    }else{
+			    	document.getElementById('per_tagged').innerHTML = 'Too many or no Report selected';
+			    }
+
+		};
+
+
+	});
+
+</script>
+{% endblock %}

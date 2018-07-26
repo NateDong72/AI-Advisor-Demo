@@ -1,0 +1,352 @@
+{% extends "base.html" %}
+
+{% block extra_css %}
+<!-- <script src="https://code.highcharts.com/stock/highstock.js"></script> -->
+<!-- <script src="https://code.highcharts.com/stock/modules/exporting.js"></script> -->
+<script src="{{ url_for('static', filename='js/highstock.js')}}"></script>
+<script src="{{ url_for('static', filename='js/exporting.js')}}"></script>
+<script src="{{ url_for('static', filename='js/stockchartstyles.js')}}"></script>
+<script src="{{ url_for('static', filename='js/d3.min.js')}}"></script>
+<script src="{{ url_for('static', filename='js/dimple.v2.3.0.min.js')}}"></script>
+<script src="{{ url_for('static', filename='js/jquery.csv-0.71.min.js')}}"></script> 
+{% endblock %}
+
+
+
+{% block sidebar %}
+
+{% endblock %}
+
+
+{% block content %}
+<div class="container-fluid px-0 mx-0">
+
+    <div class="d-flex flex-row flex-wrap w-100 justify-content-start px-0 mx-0">
+        
+        <!-- navbar -->
+        <!-- <div class="col-2 sidebar px-0" style="height: calc(100vh - 80px); background: rgb(84, 96, 110);"> -->
+        <div class="sidebar px-0" style="height: calc(100vh - 80px); width:200px; background: rgb(84, 96, 110);">
+        <!-- <div class="p_sidebar_container col-2 sidebar px-0"> -->
+          <div class="p_navheader w-100 pt-5 px-2 pb-2"><div>Case Details</div></div>
+            
+            <!-- Selection Box -->
+            <section class="p_sect drop_section pt-2">
+                  <div class="align-middle d-flex justify-content-between text-left mt-3 mx-0 text-light"><div>Case Name: </div>
+                    <select class="p_dropbox w-75 mt-2 text-dark">
+                      <option>report01</option>
+                      <option>report02</option>
+                      <option>report03</option>
+                      <option>report04</option>
+                      <option>report05</option>
+                      <option>report06</option>
+                      <option>report07</option>
+                      <option>report08</option>
+                      <option>report09</option>
+                      <option>report10</option>
+                      <option>report11</option>
+                      <option>report12</option>
+                      <option>report13</option>
+                      <option>report14</option>
+                      <option>report15</option>
+                    </select>
+                  </div>
+            </section>
+
+            <!-- Project Info -->
+            <section class="p_sect">
+                <h6 class="text-light pt-3 my-3">Target Profile</h6>
+
+                <div class="p_textdiv_sect d-flex justify-content-between text-right text-light my-3 mx-1 h6">
+                  <div>Company/Ticker:</div><div class="" style="font-size: 0.65rem;">Company 02</div>
+                </div>
+
+                <div class="p_textdiv_sect d-flex justify-content-between text-right text-light my-3 mx-1 h6">
+                  <div>Suspect Name:</div> <div>Ah Beng</div></div>
+
+                <div class="p_textdiv_sect d-flex justify-content-between text-right text-light my-3 mx-1 h6">
+                  <div>Suspect ID:</div> <div>05-0000001</div>
+                </div>
+
+                <div class="p_textdiv_sect d-flex justify-content-between text-right text-light my-3 mx-1 h6">
+                  <div>Trading Period: </div> <div>28-05-2007</div>
+                </div>
+
+              </section>
+
+            <section><div class="mt-4 ml-3 pt-3 px-1" style="width:85%;" id="riskscore_box"></div></section>
+        </div> 
+
+        <!-- chart and events -->
+        <div class="d-flex flex-row justify-content-start flex-wrap align-self-start" style="width:85%">
+        <!-- <div class="d-flex flex-row col-10 justify-content-start flex-wrap align-self-start"> -->
+            
+            <!-- StockChart -->
+            <div class="col-6 d-flex flex-column justify-content-start align-items-stretch pb-0 my-0">
+            <!-- <div class="col-7 d-flex flex-column justify-content-around align-items-stretch pb-0 my-0" style="height: 55vh;"> -->
+              <h2 class="h4 text-left align-baseline pt-3 pb-0 mb-3">Stock Price Movement</h2>
+                <!-- <div class = leftbox id='sankeySVG'></div> -->
+                <div class= "stockchart" id="container" style="height: 50vh; min-width: 40vw"></div>
+
+              <!-- positive reasons -->
+              <h3 class="h4 mt-4 pb-2">Top 3 Positive Reasons</h3>
+              <!-- <div class="reasonsbox mt-0 w-100" style="overflow: scroll;" id="pos_reasonslist"> -->
+              <div class="reasonsbox mt-0 w-100" id="pos_reasonslist">
+                <div class="reasonscard card">F4: Suspects daily open position is X% of total shares bought by suspects during the day</div>
+                <div class="reasonscard card">F19: Out of X buy trades by suspects, Y trades are S shares and below</div>
+                <div class="reasonscard card">F8: Suspects traded X% more shares P minutes before market close compared to suspect's trades normal market hour</div>
+              </div>
+
+            </div>
+
+            <!-- rightbox -->
+            <!-- Trading Events -->
+            <div class="d-flex flex-column justify-content-start align-items-start pb-0 my-0" style="width: 48%;">
+                <h2 class="h4 text-left align-baseline pt-3 pb-0 mb-3">List of Trading Events</h2>
+                <!-- <div class = rightbox id='tagslist'></div> -->
+                <div class="eventsbox w-100" id="eventslist" style="height: 50vh; overflow-y: scroll;">
+                  <table class="table table-hover table-striped" >
+                      <!-- <thead><tr><th>Item Num</th><th>Suspect ID</th><th>Buy/Sell</th><th>Volume</th><th>Price</th></tr></thead> -->
+                      <thead><tr><th>Suspect ID</th><th>TimeStamp</th><th>Buy/Sell</th><th>Volume</th><th>Price</th></tr></thead>
+                      <tbody id="transTable">
+                        
+                      </tbody>
+                    </table>
+                </div>
+
+                <!-- negative reasons -->
+                <h2 class="h4 mt-4 pb-2">Top 3 Negative Reasons</h2>
+                <!-- <div class="reasonsbox mt-0 w-100" style="overflow: scroll;" id="neg_reasonslist"> -->
+                <div class="reasonsbox mt-0 w-100" id="neg_reasonslist">
+                  <div class="reasonscard card">F1: Suspects accounted for X% of total market volume during trading hour</div>
+                  <div class="reasonscard card">F2: Suspects accounted for X% of total market volume during normal market hour</div>
+                  <div class="reasonscard card">F5: Out of X days traded by suspects, suspects accounted for PP% of total market volume during trading hour for Z days</div>
+                  </div>
+                </div>
+            </div>          
+    </div>
+</div>
+{% endblock %}
+
+
+{% block extra_js %}
+<script type="text/javascript">
+  
+  var set_of_unique_suspect_id = [];
+  var eventsflag = [];
+  var uniquetradedates = [];
+  var day_direction_pair = ['Buy', 'Sell'];
+
+  //$.get("{{ url_for('static', filename='data/Trading Data/Positive/Goldtron-all-2007.csv')}}", function(tradingdata) {
+  $.get("{{ url_for('static', filename='data/Goldtron-all-2007.csv')}}", function(tradingdata) {
+      tradingdata = $.csv.toObjects(tradingdata);
+      console.log('stock transactions')
+      console.log(tradingdata);
+
+      tradingdata.forEach(function(d) {
+        set_of_unique_suspect_id.push(d.Client);
+      });
+
+      set_of_unique_suspect_id = Array.from(new Set(set_of_unique_suspect_id));
+
+      console.log('unique suspects:')
+      console.log(set_of_unique_suspect_id);
+
+      var suspecttrades = $.grep(tradingdata, function(objs) { return objs.Client == '05-0000001'; });
+      
+      suspecttrades.forEach(function(d){
+          var datesplit = d.Date.split("/");
+          d.Date = Date.UTC(parseInt(datesplit[2]), parseInt(datesplit[0]), parseInt(datesplit[1]));
+      });
+
+      console.log(suspecttrades);
+
+
+      var toAdd = document.getElementById('transTable')
+      
+      // for each trade of suspect, create the table row entry and push the transaction to the "eventsflag array"
+      suspecttrades.forEach(function(trans, i) {
+
+        if(trans.BS != 'Trd'){
+            var newRow = document.createElement('tr');
+            newRow.className = '';
+            // var td01 = document.createElement('td');
+            // td01.textContent = i;
+            // newRow.appendChild(td01);
+            var td02 = document.createElement('td'); 
+            td02.textContent = trans.Client;
+            newRow.appendChild(td02);
+            var td01 = document.createElement('td');
+            td01.textContent = trans.Time;
+            newRow.appendChild(td01);
+            var td03 = document.createElement('td'); 
+            td03.textContent = trans.BS == 'Ask' ? 'Sell' : 'Buy';
+            newRow.appendChild(td03);
+            var td04 = document.createElement('td'); 
+            td04.textContent = trans.TransVol;
+            newRow.appendChild(td04);
+            var td05 = document.createElement('td'); 
+            td05.textContent = trans.Price;
+            newRow.appendChild(td05);
+            //console.log(sent);
+
+            toAdd.appendChild(newRow);
+            eventsflag.push({x:trans.Date, title: trans.BS == 'Ask' ? 'Sell' : 'Buy', text: trans.TransVol +' units @' + trans.Price});
+        };
+        
+      });
+
+      eventsflag.forEach(function(d) {
+        uniquetradedates.push(d.x);  // get all the trade dates then later get their unique
+      });
+
+      uniquetradedates = Array.from(new Set(uniquetradedates)); // get unique trade dates
+      var summedevents = [];
+      
+      var buysellperday = ['Buy', 'Sell'];
+
+      uniquetradedates.forEach(function(d){ // for each unique trade date
+          
+          day_direction_pair.forEach(function(bs){ // for each buy or sell trade
+                var rowcounter = 1;               // counter just to limit number of trades displayed in the triangle
+                var textinfo= String();
+
+                eventsflag.forEach(function(e){
+                  if(e.x == d & e.title == bs & rowcounter <=9){
+                    textinfo = textinfo+'<span>'+e.text+'</span><br>'
+                    rowcounter+=1;
+                   };
+                });
+          
+                //summedevents.push({x : d, title: 'B', text: '<span>adff</span><br><span>addf</span><br>'})
+                summedevents.push({x : d, 
+                  title: bs == 'Buy' ? "<img style='height:20px;' src="+"{{url_for('static', filename='images/greenArrowUp.svg.png')}}"+"/>" : "<img style='height:20px;' src="+"{{url_for('static', filename='images/redArrowDown.svg.png')}}"+"/>", 
+                  text: textinfo});
+
+          });
+      });
+
+      console.log('summed events');
+      console.log(summedevents);
+      $.get("{{ url_for('static', filename='data/goldtron_5I4.SI.csv')}}", function(stockdata) {
+          
+            //console.log(candidatesentsfile);
+          stockdata = $.csv.toObjects(stockdata);
+          var data = [];
+          stockdata.forEach(function(d){
+            data.push([Date.UTC(d.Date.substring(0,4), d.Date.substring(5,7),d.Date.substring(8,10)), parseFloat(d.Open), parseFloat(d.High), parseFloat(d.Low), parseFloat(d.Close)]); //0-3, 5-7, 8-10
+            //stockdata.push([Date.UTC(2005,01,03), d.Open, d.High, d.Low, d.Close]); //0-3, 5-7, 8-10
+          });
+          console.log('stock price data');
+          console.log(data);
+          console.log('eventsflag:')
+          console.log(eventsflag);
+
+              Highcharts.stockChart('container', {
+
+
+                  rangeSelector: {
+                      selected: 'All'
+                  },
+
+                  xAxis: {min: Date.UTC(2006,01,01),
+                          max: Date.UTC(2009,01,01)},
+
+                  title: {
+                      text: 'Goldtron Stock Price'
+                  },
+
+                  series: [{
+                      //type: 'candlestick',
+                      name: '536.SI Stock Price',
+                      data: data,
+                      id: 'dataseries',
+                      dataGrouping: {
+                          units: [['week', // unit name
+                                  [1] // allowed multiples
+                                ], ['month', [1, 2, 3, 4, 6]] ]
+                        }
+                  }, 
+
+                        {type: 'flags',
+                          useHTML:true,
+                          dataLabels:{
+                              useHTML:true,
+                          },
+                          //data: eventsflag.slice(0, 5),
+                          data: summedevents,
+                          // data: [{
+                          //     x: 1264809600000,
+                          //     title: 'F16',
+                          //     text: 'Trader Number - 05-0814661: Show true intention of selling by withrwaling best bid and immediately place sell orders at best ask and get fulfilled immediately'
+                          // }, {
+                          //     x: 1262563200000,
+                          //     title: 'F8',
+                          //     text: 'Trader Number - 05-0814661: Number of times suspect withdral the buy/sell order and place'
+                          // }],
+                          color: 'rgba(255,255,255,0)',
+                          fillColor: 'rgba(255,255,255,0)',
+                          states: {
+                              hover: {
+
+                                  fillColor: 'rgba(255,255,255,0)'
+                              }
+                          },
+                          onSeries: 'dataseries',
+                          shape: 'squarepin',
+                          width: 16}
+
+                      ]
+              });
+          });
+      
+
+  });
+	
+	var pieSvgWidth = document.getElementById('riskscore_box').clientWidth;
+  var pieSvgHeight = pieSvgWidth;
+  var per_div_occupying = 75;
+  var per_div_occupy = per_div_occupying + '%';
+  var paddingleft_per = 0.05;
+  var paddingtop_per = 0.25;
+  var pieLeftOffset = pieSvgWidth * paddingleft_per;
+  var pieTopOffset = pieSvgHeight * paddingtop_per;
+  
+
+	var pie03data = [{'Risk':'risk', 'Value': 87},{'Risk':'non-risk', 'Value': 13}]
+    var svg03 = dimple.newSvg("#riskscore_box", pieSvgWidth, pieSvgHeight);
+    var pie03 = new dimple.chart(svg03, pie03data);
+    pie03.setBounds(pieLeftOffset, pieTopOffset, per_div_occupy, per_div_occupy)
+    pie03.addMeasureAxis("p", "Value");
+    var p3r = pie03.addSeries("Risk", dimple.plot.pie);
+      p3r.innerRadius = "70%";
+      pie03.defaultColors = [new dimple.color("#6aff2e", "#000000", 1), new dimple.color("#EBEBEB", "#000000", 0.7)];
+      // pie03.defaultColors = [new dimple.color("#FFD42E", "#000000", 1), new dimple.color("#EBEBEB", "#000000", 0.7)];
+      pie03.draw(500);
+      p3r.afterDraw = function (shape, data) {
+      	var s = d3.select(shape)
+      	svg03.append('text')
+      		.attr("x", (pieSvgWidth*per_div_occupying/100)/2 + pieLeftOffset)
+            .attr("y", (pieSvgHeight*per_div_occupying/100)/2 + pieTopOffset)
+            .style("text-anchor", "middle")
+            .style("alignment-baseline", "middle")
+            .style("font-size", "2rem")
+            .style("fill", "white")
+            .style("font-family", "sans-serif")
+            .style("opacity", 0.9)
+            .text("84%");
+
+        svg03.append('text')
+      		.attr("x", (pieSvgWidth*per_div_occupying/100)/2 + pieLeftOffset)
+            .attr("y", 0)
+            .style("text-anchor", "middle")            
+            .style("alignment-baseline", "hanging")
+            .style("font-size", "1.5rem")
+            .style("font-weight", "bold")
+            //.style("fill", "#CC474D")
+            .style("fill", "rgb(255, 212, 46)")
+            .style("font-family", "sans-serif")
+            .style("opacity", 0.9)
+            .text("Consensus");
+      }
+</script>
+{% endblock %}

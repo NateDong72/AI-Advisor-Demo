@@ -1,0 +1,299 @@
+{% extends "base.html" %}
+
+{% block extra_css %}
+<script src="{{ url_for('static', filename='js/jquery.csv-0.71.min.js')}}"></script> <!-- version 0.71 -->
+{% endblock %}
+
+
+
+{% block sidebar %}
+{% endblock %}
+
+
+{% block content %}
+
+<div class="container-fluid">
+    <div class="d-flex row">
+      
+      <div class="p_sidebar_container col-2 sidebar px-0">
+        <div class="p_navheader w-100 pt-5 px-2 pb-2"><div>User Annotation</div></div>
+          
+          <!-- Selection Box -->
+          <section class="p_sect drop_section pt-2">
+                <div class="align-middle d-flex justify-content-between text-left mt-3 mx-0 text-light"><div>Expert Report: </div>
+                  <select class="p_dropbox w-75 mt-2 text-dark">
+                    <option>report01</option>
+                    <option>report02</option>
+                    <option>report03</option>
+                    <option>report04</option>
+                    <option>report05</option>
+                    <option>report06</option>
+                    <option>report07</option>
+                    <option>report08</option>
+                    <option>report09</option>
+                    <option>report10</option>
+                    <option>report11</option>
+                    <option>report12</option>
+                    <option>report13</option>
+                    <option>report14</option>
+                    <option>report15</option>
+                  </select>
+                </div>
+          </section>
+
+          <!-- Project Info -->
+          <section class="p_sect">
+              <h6 class="text-light pt-3"> PROJECT INFO</h6>
+              <div class="p_textdiv_sect d-flex justify-content-between text-right text-light my-2 mx-1 h6">
+                <div>DATASET</div> <div>Report01data</div>
+              </div>
+              <div class="p_textdiv_sect d-flex justify-content-between text-right text-light my-2 mx-1 h6">
+                <div>VIEW ID</div> <div>Classification</div></div>
+              <div class="p_textdiv_sect d-flex justify-content-between text-right text-light my-2 mx-1 h6">
+                <div>AUTHOR</div> <div>user1</div>
+              </div>
+            </section>
+
+          <!-- Progress Section -->
+          <section class="p_sect">
+            <h5 class="text-light pt-3"> PROGRESS</h5>
+            <div class="p_textdiv_sect d-flex justify-content-between text-right text-light my-2 mx-1 h6"><div>This Session</div><div id="p_session_count">588</div></div>
+            <div class="p_textdiv_sect d-flex justify-content-between text-right text-light my-2 mx-1 h6"><div>Total</div><div id="p_total_count">588</div></div>
+            
+              <!-- Progress Bar -->
+            <div class="p_textdiv_sect d-flex justify-content-between text-right text-light my-2 mx-1 h6"> 
+                <div class="p_progress_wrap w-100"><div class="p_progress_bar_inner h-100 bg-white"></div></div>  
+                <div class="font-weight-bold"><span id="p_progress_per">23</span>%</div>
+            </div>
+          </section>
+
+          <!-- History -->
+          <section class="p_sect" id="p_sent_container">
+              <h5 class="text-light pt-3 mb-3"> HISTORY</h5>
+          </section>
+      </div> 
+
+      <!-- first left box -->
+      <div class="col-5 d-flex flex-column justify-content-between">
+
+          <!-- card -->
+          <div class="prodigy_textbox card mt-3 mx-3">
+              <div class="context_title card-title w-100 m-0 text-center" id="sample_context">Context Sentence</div>
+              <div class="current_sentence card-body w-100 bg-light m-0 text-center" id="sample_sent">... Loading ...</div>
+              <div class="source_footer"></div>
+          </div>
+
+          <!-- bottom buttons -->
+          <div class = 'prodigybuttonsflexcontainer w-100 mx-0 d-flex align-self-center justify-content-center'>
+        
+              <button class='prodigy_run accept' id="p_acceptbutton">
+                  <svg fill="currentcolor" width="40" height="40" viewBox="0 0 24 24">
+                      <path d="M9 16.172l10.594-10.594 1.406 1.406-12 12-5.578-5.578 1.406-1.406z"></path>
+                  </svg>
+              </button>
+              <button class='prodigy_run reject' id="p_rejectbutton">
+                  <svg fill="currentcolor" width="40" height="40" viewBox="0 0 24 24">
+                      <path d="M18.984 6.422l-5.578 5.578 5.578 5.578-1.406 1.406-5.578-5.578-5.578 5.578-1.406-1.406 5.578-5.578-5.578-5.578 1.406-1.406 5.578 5.578 5.578-5.578z"></path>
+                  </svg>
+              </button>
+              <button class='prodigy_run ignore' id="p_ignorebutton">
+                  <svg fill="currentcolor" width="40" height="40" viewBox="0 0 24 24">
+                      <path d="M12 20.016c4.406 0 8.016-3.609 8.016-8.016 0-1.828-0.609-3.563-1.688-4.922l-11.25 11.25c1.359 1.078 3.094 1.688 4.922 1.688zM3.984 12c0 1.828 0.609 3.563 1.688 4.922l11.25-11.25c-1.359-1.078-3.094-1.688-4.922-1.688-4.406 0-8.016 3.609-8.016 8.016zM12 2.016c5.531 0 9.984 4.453 9.984 9.984s-4.453 9.984-9.984 9.984-9.984-4.453-9.984-9.984 4.453-9.984 9.984-9.984z"></path>
+                  </svg>
+              </button>
+              <button class='prodigy_run undo' id="p_undobutton">
+                  <svg fill="currentcolor" width="40" height="40" viewBox="0 0 24 24">
+                      <path d="M11.016 9l1.406 1.406-3.609 3.609h9.188v-10.031h2.016v12h-11.203l3.609 3.609-1.406 1.406-6-6z"></path>
+                  </svg>
+              </button>
+              <button class='prodigy_run approveall' id="p_selectallbutton">
+                   <!-- <a href="{{ url_for('reports') }}" style="color:white;">ALL</a> -->
+                   ALL
+                </button>
+          </div>
+      </div>
+
+      <div class="col-5 d-flex flex-column justify-content-around">
+        <div class ="text_view_window card">
+                    <div class ="text_doc mt-2 mx-3 bg-white">
+                        <div class ="text_doc_content" id="text_doc_text">
+                            Text Document...... Placeholder</div>
+                    </div>
+        </div>
+      </div>
+
+    </div>
+</div>
+
+{% endblock %}
+
+{% block extra_js %}
+<script type="text/javascript">
+
+  $("#p_selectallbutton").click(function() {
+     window.location = "{{ url_for('reports') }}";
+  });
+
+  $.get("{{ url_for('static', filename='data/AIM.pdf.txt')}}", function(txtfile) {
+      	//console.log(txtfile);
+       	var toAdd = document.getElementById('text_doc_text');
+       	toAdd.textContent = txtfile;
+     
+  	});
+
+    var candsentcount = 0;
+    var session_count = parseInt($('#p_session_count').html());
+    var total_count = parseInt($('#p_total_count').html());
+    var progress_per = parseInt($('#p_progress_per').html());
+    //var sent_num = parseInt($('#p_sent_num').html());
+
+    console.log(session_count);
+    console.log(total_count);
+    console.log(progress_per);
+    
+    function setcard(data){
+          var toAddtoContext = document.getElementById('sample_context');
+          var toAddtoSentence = document.getElementById('sample_sent');
+
+          // increment to find the lines with labels
+          while (data[candsentcount].Label == "") {
+            candsentcount += 1;
+          }
+
+          //console.log(candsentcount);
+          toAddtoContext.textContent = data[candsentcount].Label;
+          toAddtoSentence.textContent = data[candsentcount].Sentence;
+          highlighttext('text_doc_text', data[candsentcount].Sentence);
+          
+    };
+
+    function highlighttext(doc_id, text) {
+        
+        var inputText = document.getElementById(doc_id);
+        var innerHTML = inputText.innerHTML;
+        var regex = text.replace('/(/g','\\(').replace('/)/g','\\)').replace('/\+/g','\+').split(/\s+/).join('\\s+');
+        console.log(regex);
+        var search_regexp = new RegExp(regex, 'm');
+
+        var match = innerHTML.match(search_regexp);
+
+        if(match == null){ 
+            match = {};
+            match.index = -1 };
+        //if(match == null){match.index = -1};
+        if (match.index >= 0) { 
+         innerHTML = innerHTML.replace(search_regexp, "<span "+"id='sent_"+candsentcount+ "' class='highlight' tabindex="+candsentcount+">"+match[0]+"</span>");     
+         var toAdd = document.getElementById(doc_id);
+         toAdd.innerHTML = innerHTML;
+        }
+        $("#sent_"+candsentcount).focus();
+        
+    };
+
+    function removeSpan(doc_id, span_idnum) {
+        var spantext = $("#sent_"+candsentcount).text();
+        console.log(spantext);
+        $("#sent_"+candsentcount).replaceWith(spantext);
+    };
+
+
+    function increaseCountOne(data){
+  	    candsentcount += 1;
+  	    session_count += 1;
+  	    total_count += 1;
+  	    progress_per += 1;
+  	    //sent_num +=1;
+
+  	    $('#p_session_count').html(session_count);
+  	    $('#p_total_count').html(total_count);
+  	    $('#p_progress_per').html(progress_per);
+  	    //$('#p_sent_num').html(sent_num);
+  	    var newDiv = document.createElement('div');
+  	    var newDiv2 = document.createElement('div');
+  	    var newDiv3 = document.createElement('div');
+  	    newDiv.className = 'p_textdiv_sect';
+  	    newDiv.setAttribute("id", "p_navsent_"+session_count);
+  	    newDiv2.textContent = data[candsentcount].Sentence.substr(0, 20) + ' ...'; //'Sentence'
+  	    newDiv3.textContent = session_count
+  	    newDiv.appendChild(newDiv2);
+  	    newDiv.appendChild(newDiv3);
+  	    $('#p_sent_container').append(newDiv);
+  	    if(progress_per>=38){
+  	      alert("This report has reached a sufficient amount of tagging and can be used for modeling/analysis.");
+  	    }
+    }
+
+    function decreaseCountOne(data){
+  	    candsentcount -= 1;
+  	    // decrement to find the lines with labels
+  	    while (data[candsentcount].Label == "") {
+  	      candsentcount -= 1;
+  	    }
+  	    
+  	    $("#p_navsent_"+session_count).remove();
+  	    session_count -= 1;
+  	    total_count -= 1;
+  	    progress_per -= 1;
+  	    //sent_num -=1;
+
+  	    $('#p_session_count').html(session_count);
+  	    $('#p_total_count').html(total_count);
+  	    $('#p_progress_per').html(progress_per);
+
+
+  	    //$('#p_sent_num').html(sent_num);
+    }
+
+  	//$.getJSON("{{ url_for('static', filename='data/candidatesents.json')}}", function(candidatesentsfile) {
+    $.get("{{ url_for('static', filename='data/Features.csv')}}", function(candidatesentsfile) {
+      	//console.log(candidatesentsfile);
+      	data = $.csv.toObjects(candidatesentsfile);
+         
+        setcard(data);
+        
+        $("#p_acceptbutton").click(function(){
+
+            // set sentence class to accepted.
+            $("#sent_"+candsentcount).addClass("accepted");
+
+            // get next card and set value
+            increaseCountOne(data);
+            //candsentcount += 1; 
+            setcard(data);
+        });
+
+        $("#p_rejectbutton").click(function(){
+            // set sentence class to accepted.
+            $("#sent_"+candsentcount).addClass("rejected");
+
+            // get next card and set value
+            increaseCountOne(data);
+            //candsentcount += 1; 
+            setcard(data);
+        });
+
+        $("#p_ignorebutton").click(function(){
+            // set sentence class to accepted.
+            $("#sent_"+candsentcount).addClass("ignored");
+
+            // get next card and set value
+            increaseCountOne(data)
+            //candsentcount += 1; 
+            setcard(data);
+        });
+
+        $("#p_undobutton").click(function(){
+
+            //remove current card and span tag
+            removeSpan('text_doc_text', candsentcount);
+
+            // get next card and set value
+            decreaseCountOne(data);
+            //candsentcount -= 1; 
+            setcard(data);
+        });
+
+  	});
+</script>
+
+{% endblock %}

@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+
+{% block extra_css %}
+{% endblock %}
+
+
+
+{% block sidebar %}{% endblock %}
+
+
+{% block content %}
+<div class="container-fluid" style="margin-top:30px">
+	<h1 class= 'titletext'>Welcome to the Artifical Intelligence Expert Advisor</h1>
+
+    <div class = 'flexcontainer row d-flex justify-content-center'>
+
+        <div class = 'linkbutton col-2 m-4 h-100 d-flex flex-column justify-content-between' id = 'learn_button' >
+            <div>
+	                <img class= 'circlelogo mb-4' src="{{ url_for('static', filename='images/circlelogo_learn.png')}}" />
+	            
+	            
+	            <span class="">Active Learning NLP & CNN to extract salient sentences with mapping to features.</span>
+            </div>
+            
+        </div>
+
+        <div class = 'linkbutton col-2 m-4 h-100 d-flex flex-column justify-content-between' id = 'predict_button'>
+	        <div>
+	     
+	                <img class= 'circlelogo mb-4' src="{{ url_for('static', filename='images/circlelogo_predict.png')}}" />
+	  
+	            
+	            <span class="">Decision model to predict expert's agreetment on market manipulation.</span>
+            </div>
+            
+        </div>
+
+        <div class = 'linkbutton col-2 m-4 h-100 d-flex flex-column justify-content-between' id = 'know_button'>
+            <div>
+	         
+	                <img class= 'circlelogo mb-4' src="{{ url_for('static', filename='images/circlelogo_explain.png')}}"/>
+	       
+	            
+	            <span class="" style="height: 9rem;">Deep dive into decision model with feature significance & values.</span>
+            </div>
+            
+        </div>
+        
+    </div>
+
+	<div class = 'flexcontainer row d-flex justify-content-center' style="height: 52vh;">
+
+	        <div class = 'linkbutton col-2 m-4 h-100 d-flex flex-column justify-content-between' id = 'learn_button' >
+	            <!-- drop down button -->
+	            <div class="dropdown mt-3">
+	            	<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">New Report</button>
+	            	<div class="dropdown-menu">
+	            		<a class="dropdown-item" href="{{ url_for('annotations') }}">report01.pdf</a>
+	            	</div>
+	            </div>
+	        </div>
+
+	        <div class = 'linkbutton col-2 m-4 h-100 d-flex flex-column justify-content-between' id = 'predict_button'>
+	            <!-- drop down button -->
+	            <div class="dropdown mt-3">
+	            	<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">New Case</button>
+	            	<div class="dropdown-menu">
+	            		<a class="dropdown-item" href="{{ url_for('events') }}">company 02</a>
+	            	</div>
+	            </div>
+	        </div>
+
+	        <div class = 'linkbutton col-2 m-4 h-100 d-flex flex-column justify-content-between' id = 'know_button'>
+	            <!-- drop down button -->
+	            <div class="dropdown mt-3">
+	            	<a href="{{ url_for('models') }}"><button class="btn btn-primary" type="button" >Model Summary</button></a>
+	            </div>
+	        </div>
+	</div>
+
+</div>
+{% endblock %}

@@ -1,0 +1,1073 @@
+From the desk of xxOther Namexx 
+Singapore [65]:  6733 3932 (O), 9788 5174 (M) 
+Australia [613]: 6211 1111 (O), 6260 4509 (R) 
+xxxx@ach.to or xxxxxx.com.au 
+   
+June 24, 2008 
+ 
+xxxx xxxx 
+Assistant Director 
+Securities & Maritime Fraud Department 
+Commercial Affairs Department 
+391 New Bridge Road 
+#06-701 Police Cantonment Complex Block D 
+Singapore 088762 
+ 
+In the matter of the trading in 
+XXXX XXXXX xXxX Corp Ltd (“Company01”)  
+ 
+With respect to the actions of  
+xxSuspect01xx (“xxSuspect01xx”)  
+ 
+Expert Opinion Report 
+ 
+ 
+Dear Madam, 
+ 
+Please accept this letter as my considered opinion to the questions posed under your Terms 
+of Reference received by myself on [7 May 2008] with respect to S197(1)(b) of the Securities 
+and Futures Act (chapter 289, 2002 Revised Edition). 
+ 
+Background 
+ 
+1. Glossary and Facts provided to myself and used in this report: 
+ 
+a. “Company01” or “the Company” means Advanced Integrated Manufacturing Corp Ltd 
+an electronics manufacturing services provider, specializing in medium and 
+high-end application for aerospace-avionics, medical, life sciences, data 
+storage, semi-conductor and fiber optics  industries and which was listed on 
+the SGX main board on 26 May 2005 with an initial public offering price of 
+$0.20;  
+ 
+b. “Xxx” shall mean Mrs. Xxx xxxx xxxx, the wife of xxSuspect01xx; 
+ 
+c. “Intraday Price” means the change in the price between the day’s opening 
+price and the day’s closing price during the Relevant Period.  For example on 
+the 27/3/2006 the opening price of the Shares was 33 cents and the closing 
+price was 36 cents.  The Intraday price was thus 3 cents.  Note the opening 
+ 
+12 
+ 
+ 
+price is not necessarily the same as the previous day’s closing price.  The 
+closing price of the 26/3/2006 was 32.5 cents.  
+ 
+d. “Market Days” means the days on which the Singapore Stock Exchange was 
+open for trading; 
+ 
+e. “Relevant Period” means the 15 February 2006 and 31 October 2006 
+inclusive; 
+ 
+f. “SESMANU” means the SES Manufacturing Index; 
+ 
+g. “SFA” means Securities and Futures Act (chapter 289, 2002 Revised Edition); 
+ 
+h. “SGX” shall mean the Singapore Exchanged Limited and its subsidiaries the 
+Singapore Stock Exchange and the Singapore International Monetary 
+Exchange; 
+ 
+i. “Share(s)” or “Company01 Shares” means the ordinary, issued and fully paid shares 
+of Company01 and which are listed on the SGX;  
+ 
+j. “STI” means the Straits Times Index; 
+ 
+k. “xxSuspect01xx” shall mean Dr. xxSuspect01xx xxx xxx xxx or xxSuspect01xx xxx xxx xxx and 
+Xxx Xxx xxXx.  Thus when the report speaks of xxSuspect01xx’s action it means 
+either the action of xxSuspect01xx xxx xxx xxx solely or the actions of xxSuspect01xx xxx 
+xxx xxxx and xxx xxxx xxxx jointly. 
+ 
+l. “74 Days” means the 74 days during the Relevant Period on which xxSuspect01xx 
+executed a trade;  
+ 
+m. One folder of information and further supplementary data by way of e-mail 
+and as listed in Appendix 1.   
+ 
+ 
+ 
+13 
+ 
+ 
+Terms of Reference 
+ 
+2. For the period between 15 February 2006 and 31 October 2006, 
+ 
+2.1 Having regard to the prevailing market conditions, 
+ 
+a. What appearance did the orders and trades conducted by xxSuspect01xx create, 
+or were likely to create, with respect to the market for Company01 shares? In 
+particular, did the orders and trades by xxSuspect01xx create, or were likely to 
+create, a false or misleading appearance with respect to the market for Company01 
+shares? 
+ 
+b. What appearance did the orders and trades conducted by xxSuspect01xx create, 
+or were likely to create, with respect to the price of Company01 shares? In 
+particular, did the orders and trades by xxSuspect01xx create, or were likely to 
+create, a false or misleading appearance with respect to the price of Company01 
+shares? 
+ 
+2.2 Should you be of the opinion that the orders and trades by xxSuspect01xx had 
+affected the market for and/or price of Company01 shares in any way, please give 
+your opinion on whether it could be inferred that the orders and trades were 
+intentionally carried out to cause such an appearance or effect, and if so, the 
+basis of this inference.  
+ 
+In the above analysis, you may assume that the orders and trades in Xxx Xxxx Xxxx’s 
+securities trading account were conducted by xxSuspect01xx. 
+ 
+ 
+ 
+14 
+ 
+ 
+Important Notice 
+ 
+3 All my expert opinions rely on one significant assumption - that the trading efficiency 
+of the Singapore Stock Market is best described by the ‘semi-strong form’ market 
+efficiency theory.  This market theory states that equity markets are generally 
+efficient but are not always or wholly efficient.  There are rival theories and they 
+include: a ‘strong form’ theory that postulates that stock markets are wholly efficient; 
+and a ‘weak form’ theory that postulates that stock markets are wholly inefficient.  In 
+a wholly efficient market (‘strong form’) all information is known and thus no action 
+undertaken by any person can distort or manipulate the market.  In a wholly 
+inefficient market (‘weak form’) very little information is available to, or known by, 
+investors.  Thus all actions distort the market significantly.  It is my experience that 
+most of my fellow professionals in the finance industry adhere to the semi-strong 
+form market efficiency assumption. 
+ 
+4 This expert opinion has been prepared in the knowledge that it may be used in a 
+court of law. Not withstanding the fact that this expert opinion was requested by the 
+Commercial Affairs Department, I confirm that this expert opinion is independent in 
+the sense that the opinions it sets forth have not been influenced by the Commercial 
+Affairs Department and has been prepared to assist the Court rather than to support 
+the case before me.  I further confirm that I understand my duties as an expert 
+witness to the Court and that I have complied with such duties. 
+ 
+  
+ 
+15 
+ 
+ 
+Price for the Securities 
+ 
+5 During the Relevant Period there were xxx Market Days, meaning xxx days when 
+the SGX was open for trading.  Company01 Shares only traded on 146 days out of the xxx 
+available days, meaning on xx Market Days during the Relevant Period there were 
+no trades in Company01 Shares. 
+ 
+6 Of the xxx days that Company01 Shares were traded during the Relevant Period, xxSuspect01xx 
+traded on xx of those days.  Meaning that xxSuspect01xx traded on xx.x% or just above 
+half the number of days Company01 Shares was traded during the Relevant Period.  xxSuspect01xx 
+was therefore a very active trader of Company01 Shares during the Relevant Period.  
+ 
+7 During the Relevant Period some xx,xxx,xxx Shares were traded.  During the 
+Relevant Period xxSuspect01xx bought xx,xxx,xxx Shares.  During the Relevant Period 
+xxSuspect01xx sold no Shares.  xxSuspect01xx thus accounted for some xx% of all traded volume. 
+xxSuspect01xx therefore contributed very significantly to the traded volume of, and was a 
+very important source of demand for, the Shares during the Relevant Period. 
+ 
+8 During the rest of xxxx, being the xx Market Days of xxxx not within the Relevant 
+Period, xxSuspect01xx bought x,xxx,xxx Shares.  Meaning that xxSuspect01xx bought a total of 
+xx,xxx,xxx Shares in xxxx of which nearly xx% were during the Relevant Period.   
+ 
+9 x Market days after the start1 of the Relevant Period (being xx Feb. xxxx) and as 
+shown on the following page, the price of the Shares started to significantly 
+outperform the overall market2 and the industrial sector3 to which Company01 belongs.  x 
+Market days after the end1 of the Relevant Period (being xx Nov. xxxx) the price of 
+the Shares started to significantly underperform the STI and SESMANU indices.   
+ 
+                                                 
+1 It is not uncommon for an observable trend to emerge only after a period due to price “inertia”.  
+2 As represented by the STI Index 
+3 As represented by the SES Manufacturing Sub-Index 
+ 
+16 
+ 
+ 
+Chart 1: The relative performance of Company01 Shares vs the market as represented 
+by the STI and the industrial sector to which it belongs as represented by the 
+SESMANU 
+ 
+ 
+ 
+10 During the Relevant Period and more specifically between the xx May xxxx and xx 
+June xxxx, the STI and the SESMANU declined by x% and xx%, respectively.  In 
+contrast, and during this period, the price of Company01 Shares rose by x% or x cent from 
+xx cents to xx cents. 
+ 
+11 I have reviewed the announcements of Company01 for the whole of xxxx.  A list of the 
+announcements made by Company01 is shown in Appendix x.  
+ 
+11.1 There were only two notable announcements prior to the xx February xxxx 
+and the start of the Company01 Share price rally.  I do not believe that these 
+announcements could have contributed to the price of the Shares 
+outperforming so significantly the STI and SESMANU during the period 
+described in Point x given that:  
+ 
+a. The first announcement on xx January xxxx was with respect to the 
+acquisition of the intellectual property rights to the following lancet 
+assembly, safety syringe, safety heel stick & safety scalpel.  In an 
+announcement dated xx January xxxx Company01 further announced it was 
+unable to judge the likely impact of this acquisition as the inventions were 
+new.  Further, and given that Company01’s main products are avionics for the 
+aerospace industry it is difficult to see why investors would get very excited 
+by ASIM acquiring a mass market low per unit value medical device.  
+Company01 S hare P riv e v s  Market & S ec tor
+(all prices  at x J an. xxxx res t to xxx)
+xx.0
+xxx.0
+xxx.0
+xxx.0
+xxx.0
+xxx.0
+xxx.0
+xxx.0
+xxx.0
+xxx.0
+3/
+01
+/2
+00
+6
+23
+/0
+1/
+20
+06
+13
+/0
+2/
+20
+06
+2/
+03
+/2
+00
+6
+21
+/0
+3/
+20
+06
+7/
+04
+/2
+00
+6
+27
+/0
+4/
+20
+06
+18
+/0
+5/
+20
+06
+6/
+06
+/2
+00
+6
+23
+/0
+6/
+20
+06
+12
+/0
+7/
+20
+06
+31
+/0
+7/
+20
+06
+18
+/0
+8/
+20
+06
+6/
+09
+/2
+00
+6
+25
+/0
+9/
+20
+06
+12
+/1
+0/
+20
+06
+1/
+11
+/2
+00
+6
+20
+/1
+1/
+20
+06
+7/
+12
+/2
+00
+6
+27
+/1
+2/
+20
+06
+17
+/0
+1/
+20
+07
+5/
+02
+/2
+00
+7
+26
+/0
+2/
+20
+07
+15
+/0
+3/
+20
+07
+Company01
+STI
+SESMANU
+Relev ant
+Period
+ 
+17 
+ 
+ 
+  
+b. The second announcement on the xx February xxxx is with respect to the 
+full year xxxx earnings.  On an pro-forma adjusted basis the net profit 
+announced was S$x.x million down from FYxxxx’s S$xx.x million.  It is 
+also difficult to see why investors would greet such a decline warmly.  
+ 
+11.2 There were only two notable announcements in the x weeks leading up to xx 
+November xxxx and the start of the Company01 Share price decline.  I do not believe 
+that these announcements which both occurred on the xx November xxxx 
+could have contributed to the price of the Shares underperforming so 
+significantly the STI and SESMANU post this date given that: 
+ 
+c. One announcement, in my opinion, was mildly negative and relates to the 
+resignation of the COO of Company01.  Unlike many small to medium sized 
+companies Company01 is relatively rich in management.  It has xxSuspect01xx who is the 
+founder, major shareholder, Executive Chairman and CEO and who has 
+a host of degrees and many years experience in the industry.  It has Dr. 
+Philip Poh as Group Managing Director and who also has a host of 
+degrees and is a specialist in supply chain management.  
+  
+d. One announcement, in my opinion, was mildly positive and relates to 3rd 
+quarter xxxx earnings.  The number showed that 3rd quarter xxxx net 
+profit after tax as compared to that of the 3rd quarter xxxx rose by xx.x%.  
+However, the cumulative net profit after tax of the first x months of xxxx 
+was still lower than that of the first x months of xxxx though the gap had 
+declined significantly from the first quarters -xx.x% to -x.x%.  
+ 
+12 I have reviewed the announcements of Company01 during for xxxx and do not believe that 
+these announcements could have contributed to the price of the Shares performing 
+so well during the market correction as described in Point xx.  In fact the only 
+announcement of note was a negative announcement of the 11 May xxxx and which 
+preceded the market correction.  This was the announcement of the 1st quarter 
+earnings.  This announcement showed revenues down x.x%, a sharp gross margin 
+decline and net profit after tax down -xx.x%. 
+ 
+13 xxSuspect01xx’s pattern of trading during the Relevant Period was unusual.  Of the xx Days 
+that xxSuspect01xx traded: 
+ 
+e. On most of these days, xxSuspect01xx executed the bulk of his day’s trade in the 
+afternoon4.  On xx days, accounting for xx% of the xx Days, xxSuspect01xx executed 
+xx% or more of his trades in the afternoon.  On xx days, accounting for xx% of 
+the xx Days, xxSuspect01xx executed the xx% or more of his trades in the afternoon.   
+On xx days, accounting for 40% of the xx Days, xxSuspect01xx executed all of his 
+                                                 
+4 With respect to the volume of Shares xxSuspect01xx executed, the bulk also took place in the afternoon (about 
+xx%). 
+ 
+18 
+ 
+ 
+trades in the afternoon.  Given the size and incidence of xxSuspect01xx’s trades, it is 
+difficult to envisage a situation whereby xxSuspect01xx’s bias towards afternoon 
+trading would not influence the afternoon session price of the Shares, and the 
+closing price of the Shares, during the Relevant Period;   
+ 
+Table 2: The pattern of xxSuspect01xx’s trades on the days that he traded during 
+the Relevant Period 
+ 
+ 
+ 
+f. On xx days, or xx% of the xx Days, xxSuspect01xx was either the last trade of the day 
+or xxSuspect01xx accounted for the whole or a very significant percentage of the pre-
+close5.  Of the xx days, xx days did not have pre-close activity. On these days, 
+xxSuspect01xx’s trade was the last trade of the day.  Of the xx days, xx days had pre-
+close activity. On these days, xxSuspect01xx’s trades accounted for the whole or a very 
+significant percentage of the pre-close trade on these days.  Given the size and 
+incidence of xxSuspect01xx’s trades it is difficult to envisage a situation whereby 
+xxSuspect01xx’s preference for being the last trade of the day or dominating pre-close 
+trade would not have influenced the closing price on all of these xx days during 
+the Relevant Period;   
+ 
+Table 3: Days on which xxSuspect01xx was the last trade or the accounted for 
+the whole or a very significant percentage of the pre-close 
+ 
+Days on 
+which 
+xxSuspect01xx 
+was the 
+last trade 
+xxSuspect01xx’s 
+afternoon 
+trades 
+as % of 
+total 
+afternoon 
+trades 
+Days on 
+which 
+xxSuspect01xx 
+dominated 
+the pre-
+close 
+xxSuspect01xx's 
+trade as 
+a % of 
+total pre-
+close 
+trade 
+xx/xx/xxxx xx% xx/x/xxxx xx.0% 
+x/x/xxxx xx% xx/x/xxxx xx.0% 
+x/x/xxxx xx% xx/x/xxxx xx.0% 
+x/x/xxxx* xx% xx/x/xxxx xx.0% 
+xx/x/xxxx xx% xx/x/xxxx xx.0% 
+xx/x/xxxx xx% x/x/xxxx xx.0% 
+xx/x/xxxx xx% x/x/xxxx xx.0% 
+                                                 
+5 The pre-close is a trading period of x minutes following the end of a trading day and which using a single 
+matching system.  For more details please see Appendix 4.  
+Number of Days that xxSuspect01xx traded:
+100% in the morning x
+Bulk but not all in the 
+morning x
+Bulk but not all in the 
+afternoon xx
+100% in the afternoon xx
+xx
+ 
+19 
+ 
+-- Dates truncated --
+.
+.
+. 
+-- Dates truncated --
+
+*  There was no afternoon or pre-close trade.  xxSuspect01xx’s trade was the last trade of the 
+morning session. 
+ 
+14 The days on which xxSuspect01xx traded displayed unusual price movements.  The table 
+below tracks the Intraday Price, meaning the change in the price between the day’s 
+opening price and the day’s closing price during the Relevant Period.  For example, 
+the number 23 in the table on the following page means that on xx days the Intraday 
+Price, on the days that xxSuspect01xx did not trade, experienced no change.   For example, 
+the number 19 in the table on the following page means that on xx days the Intraday 
+Price, on the days that xxSuspect01xx did trade, experienced a +x cent change.   From this 
+table it can be noted that:  
+ 
+a. On the days that xxSuspect01xx did not trade, the Intraday Price spread was -x cent to 
++3 cents.  The spread was thus x cents or about xx.x% of the average closing 
+price of the Share6 price during the Relevant Period.  But on the days that 
+                                                 
+6 Of about xx.x cents 
+ 
+xxx 
+ 
+ 
+xxSuspect01xx traded, the Intraday Price spread was -x cents to +x cents.  The spread 
+was thus x cents or a whopping 22% of the average closing price of the Share6 
+price during the Relevant Period.   
+ 
+b. The average Intraday Price movement, on the days that xxSuspect01xx did not trade 
+was 0.43 cents.   The average Intraday Price movement, on the days that 
+xxSuspect01xx traded was x.xx cents or nearly x.x times larger.    
+  
+c. Last but not least, the usual steady state, meaning the median Intraday Price 
+change (represented by the xx% backgrounded in yellow in the table below) on 
+days that xxSuspect01xx did not traded was zero (no change).  The most likely 
+movement on days that xxSuspect01xx did not traded (xx% being xx% and xx% and 
+xx%) was + or – x cent.  On the other hand, on days that xxSuspect01xx traded, the 
+median Intraday Price change (represented by the xx% backgrounded in yellow 
+in the table below) was 1 cent and the most likely movement (xx% being xx% 
+and xx% and xx%) was + or – x cents.     
+ 
+Table 4: The Impact of xxSuspect01xx’s trades on the price of Company01 Shares 
+ 
+ 
+Days on 
+which 
+xxSuspect01xx 
+did not 
+trade 
+Days on 
+which 
+xxSuspect01xx  
+traded 
+Days on 
+which 
+xxSuspect01xx 
+was Last 
+Trade 
+Days on 
+which 
+xxSuspect01xx in 
+the Pre-
+close 
+Rose by between x.x to x cents 0 1 1  
+Rose by between x.x to x cents 0 1 1  
+Rose by between x.x to x cents 2 x x 1 
+Rose by between x.x to x cents xx xx xx x 
+Rose by up to 1 cent xx xx xx xx 
+No change xx x x x 
+Fell by up to 1 cent xx x 1 x 
+Fell by between x.x to x cents 0 1 0 1 
+Fell by more than x cents or 
+more 0 1 0  
+TOTAL DAYS xx xx xx xx 
+Av price movement (cents) 
+           
+0.xx  
+           
+x.xx  
+           
+x.xx  
+           
+0.xx 
+ 
+ 
+Days on 
+which 
+xxSuspect01xx 
+did not 
+trade 
+Days on 
+which 
+xxSuspect01xx  
+traded 
+Days on 
+which 
+xxSuspect01xx 
+was Last 
+Trade 
+Days on 
+which 
+xxSuspect01xx in 
+the Pre-
+close 
+Rose by between x.1 to x cents 0% 1% x% 0% 
+Rose by between x.1 to x cents 0% 1% x% 0% 
+ 
+111 
+ 
+ 
+Rose by between 2.1 to 3 cents 3% 8% 13% 5% 
+Rose by between 1.1 to 2 cents 17% 26% 31% 18% 
+Rose by up to x cent xx% xx% xx% 45% 
+No change xx% xx% x% xx% 
+Fell by up to 1 cent xx% x% x% x% 
+Fell by between 1.1 to 2 cents 0% 1% 0% 5% 
+Fell by more than 2 cents or 
+more 0% 1% 0% 0% 
+TOTAL DAYS 100% 100% 100% 100% 
+ 
+ 
+15 Given Points x to xx, I am of the opinion that; 
+ 
+a. xxSuspect01xx was a very significant trader and source of demand for Company01 shares 
+during the Relevant Period and significant trader and source of demand for Company01 
+shares in 2006 as a whole. 
+ 
+b. From the perspective of an ordinary investor, and given the information 
+available from Company01 in 2006, there was no apparent reason for: (i) the price of 
+Company01 Shares to significantly outperformed the STI and SESMANU during most 
+of the Relevant Period and particularly during 27 Feb. 2006 to 10 Nov. 2006; 
+(ii) the price of the Shares to rise when the STI and SESMANU indices fell 
+during the market correction of 15 May to 14 June 2006. 
+ 
+c. xxSuspect01xx’s pattern of trading was unusual.  xxSuspect01xx favoured trading in the 
+afternoon session and was frequently the last trade of the day on days when 
+there were no pre-close trades.  xxSuspect01xx trades frequently dominate pre-close 
+trades on days when there were pre-close trades.  It would be difficult to 
+envisage a situation where xxSuspect01xx’s trading pattern would not impact the 
+appearance with respect to the price of Company01 Shares. 
+ 
+d. On the days that xxSuspect01xx traded, xxSuspect01xx’s trades altered the Intraday Price’s 
+total, average and median spreads.  Therefore, and on the days during the 
+Relevant Period that xxSuspect01xx traded, xxSuspect01xx’s trades created a false or 
+misleading appearance with respect to the price of Company01 Shares. 
+ 
+e. When one investor is such as significant trader of a security, it is inevitable that 
+this investor will impact not only the price on the day that he trades but also 
+other investor perceptions and thus the price on days which he did not trade.  
+Therefore, and on the days during the Relevant Period that xxSuspect01xx did not 
+trade, xxSuspect01xx’s trades was likely to create a false or misleading appearance 
+with respect to the price of Company01 Shares. 
+ 
+ 
+112 
+ 
+ 
+f. xxSuspect01xx trades during the Relevant Period created, and were likely to create, a 
+false or misleading appearance with respect to the price of Company01 shares.  
+ 
+ 
+ 
+ 
+Market for the Securities 
+ 
+16 A market can be defined in several ways.  For the purposes of this report I have 
+defined a market as a process where securities are bought and sold by various 
+parties or persons.  Thus, and at its most basic, a market is simply the sum of the 
+price at which quantities of a security has been traded. 
+ 
+Market = sum (price * volume traded) 
+ 
+17 Given Point 16 the following matrix can be derived.  The word impact means the 
+impact of xxSuspect01xx’s action on the price or the traded volume of the Share. 
+ 
+ Impact on Price of 
+Share is significant 
+Impact on Price of 
+Share is material 
+Impact on Price of 
+Share is not 
+significant 
+Impact on traded 
+volume of Share is 
+significant 
+ 
+Yes 
+(quadrant 1) 
+ 
+Yes 
+(quadrant 2) 
+ 
+Maybe 
+(quadrant 3) 
+Impact on traded 
+volume of Share is 
+material 
+ 
+Yes 
+(quadrant 4) 
+ 
+Maybe 
+(quadrant 5) 
+ 
+No 
+(quadrant 6) 
+Impact on traded 
+volume of Share is 
+not significant 
+ 
+Maybe 
+(quadrant 7) 
+ 
+No 
+(quadrant 8) 
+ 
+No 
+(quadrant 9) 
+ 
+Yes: (quadrants 1, 2 and 3) means orders and trades by xxSuspect01xx created, or were likely to create, 
+a false or misleading appearance with respect to the market for Company01 Shares. 
+ 
+Maybe: (quadrants 3, 5 and 7) means orders and trades by xxSuspect01xx may have created a false or 
+misleading appearance with respect to the market for Company01 Shares. 
+ 
+No: (quadrants 6, 8 and 9) means orders and trades by xxSuspect01xx did not created, or were unlikely 
+to create, a false or misleading appearance with respect to the market for Company01 Shares. 
+ 
+18 In Point 7 it was noted that xxSuspect01xx accounted for some 46% of all traded volume 
+during the Relevant Period.  Once any investor accounts for more than 30% of a 
+day or a period’s trade, it is inevitable that the investor will impact the traded volume 
+of the security for that day or period (the “30% Rule”).   
+ 
+19 Besides being significant during that Relevant Period, xxSuspect01xx’s trades were also 
+very significant on select days during the Relevant Period (please see table on 
+ 
+113 
+ 
+ 
+following page). On 8 of those days xxSuspect01xx accounted for all the purchases. On 63 
+days (being 8 + 55 days) xxSuspect01xx accounted for 50% or more of the purchases.  On 
+69 days (being 8 + 55 + 6 days) xxSuspect01xx accounted for 30% or more of the 
+purchases.  69 days represent 47% or nearly half of the days that Company01 Shares were 
+traded during the Relevant Period.     
+ 
+Table 5: xxSuspect01xx’s trades as a percentage of total trades on days that xxSuspect01xx 
+traded during the Relevant Period:  
+ 
+Total Traded Volume Accounted for 
+100%  8 
+50% to 99.9%  55 
+30% to 49.9%  6 
+15% to 29.9%  5 
+5% to 14.9%  0 
+below 5%  0 
+  74 
+ 
+20 In Points 9, 10, 13 and 14, I demonstrated that xxSuspect01xx’s trades significantly affected 
+the price of Company01 Shares.  Given this and Points 16 to 19, I am of the opinion that: 
+  
+a. On the 69 days that xxSuspect01xx accounted for 30% or more of that day’s total 
+trades, xxSuspect01xx would have very significantly impacted the traded volume of 
+those days.  Accordingly xxSuspect01xx’s actions fall into quadrant 1 of Point 17’s 
+matrix.  Accordingly I am of the belief that orders and trades by xxSuspect01xx created 
+a false or misleading appearance with respect to the market for Company01 Shares on 
+these 69 days. 
+ 
+b. xxSuspect01xx accounted for 46% of all trades during the Relevant Period and thus 
+was a significant trader of Company01 Shares during the Relevant Period.  Accordingly 
+xxSuspect01xx’s actions fall into quadrant 1 of Point 17’s matrix.  When one investor is 
+such as significant trader of a security it is inevitable that this investor will impact 
+not only the traded volume of that day but also other investor perceptions and 
+thus the traded volume of days on which he did not trade.   Accordingly I am of 
+the belief that the orders and trades by xxSuspect01xx were likely to create a false or 
+misleading appearance with respect to the market for Company01 Shares during the 
+whole of the Relevant Period. 
+ 
+ 
+ 
+114 
+ 
+ 
+Intentions of xxSuspect01xx 
+ 
+21 I have neither spoken to xxSuspect01xx or Teo nor read any statement made by them.  
+Thus my observations below are merely ones based on the data and facts detailed 
+in Appendix 1 of this report.    
+ 
+22 xxSuspect01xx is the major shareholder of Company01.  xxSuspect01xx as at the 3 Jan. 2006, or on the 
+first Market Day of 2006, owned 480,671,528 Shares or about 73.3% of the total 
+outstanding share capital of Company01. 
+ 
+23 Company01 was listed on the 26 May 2005 or just under 9 months prior to the start of 
+xxSuspect01xx’s first purchase on the 16 Feb. 2006 and the Relevant Period. 
+ 
+24 During the Relevant Period, the cumulative holding of xxSuspect01xx rose as follows: 
+ 
+Chart 6: Cumulative Holdings of xxSuspect01xx during the Relative Period 
+ 
+  
+ 
+ 
+25 The sharp rise in xxSuspect01xx’s holding was unusual given that:  
+ 
+a. When xxSuspect01xx started buying the Shares, Company01 had not been listed a year.  Less 
+than 9 months previously Company01 debuted at an IPO price of 20 cents.  But yet by 31 
+Mar. 2006 xxSuspect01xx felt it was reasonable pay an average price of 35.5 cents or 
+77% more than the IPO price for 1,205,000 Shares (highest average paid price).    
+ 
+b. The announcements that I had reviewed did not suggest that the market had 
+incorrectly discounted or was ignoring any significant news.  A review of the 2007 
+Annual Report (post balance sheet test) reaffirms my opinion that the market had 
+not missed any major trends with respect to Company01 or its industry. 
+ 
+ 
+ 
+Table 7: Company01’s Financial Performance 
+ 
+480,000,000 
+490,000,000 
+500,000,000 
+510,000,000 
+520,000,000 
+1
+5
+/2
+/2
+0
+0
+6
+1
+5
+/3
+/2
+0
+0
+6
+1
+5
+/4
+/2
+0
+0
+6
+1
+5
+/5
+/2
+0
+0
+6
+1
+5
+/6
+/2
+0
+0
+6
+1
+5
+/7
+/2
+0
+0
+6
+1
+5
+/8
+/2
+0
+0
+6
+1
+5
+/9
+/2
+0
+0
+6
+1
+5
+/1
+0
+/2
+0
+0
+6
+xxSuspect01xx's Shares
+73.0%
+74.0%
+75.0%
+76.0%
+77.0%
+78.0%
+79.0%
+1
+5
+/2
+/2
+0
+0
+6
+1
+5
+/3
+/2
+0
+0
+6
+1
+5
+/4
+/2
+0
+0
+6
+1
+5
+/5
+/2
+0
+0
+6
+1
+5
+/6
+/2
+0
+0
+6
+1
+5
+/7
+/2
+0
+0
+6
+1
+5
+/8
+/2
+0
+0
+6
+1
+5
+/9
+/2
+0
+0
+6
+1
+5
+/1
+0
+/2
+0
+0
+6
+xxSuspect01xx's holding in Company01
+ 
+115 
+ 
+ 
+Year Net Profit after Tax 
+2003 S$6.2m 
+2004 S$12.1m 
+2005 S$8.5m 
+2006 S$6.2m 
+2007 S$4.1m 
+ 
+ 
+c. The market and investors generally view negatively those securities whose 
+liquidity is low.  xxSuspect01xx’s actions reduced the number of shares that he did not 
+own from around 175.1 million Shares at the start of the Relevant Period to 140.1 
+million Shares at the end of the Relevant Period.  This is a 5.4 percentage point, 
+or nearly 20% reduction (!!), in the free float.  
+ 
+d. The market and investors generally view negatively those securities whose major 
+shareholder or senior managers are selling the security.  As xxSuspect01xx is both a 
+major shareholder and the most senior manager, any selling he may undertake 
+could undermine Company01’s Share price.  Meaning xxSuspect01xx could not have been buying 
+the shares for trading purposes. 
+ 
+26 One common reason why a major shareholder would acquire significantly more 
+shares in his own company is if he believed that the company was significantly 
+undervalued by the market.  xxSuspect01xx must have thought that his company was 
+reasonably valued, or at least not significantly undervalued, at 20 cents or he would 
+not have agreed to IPO at that price.  There were no disclosed information that 
+would suggest that the company was being significantly undervalued at the start of 
+2006 and that 35.5 cents, the highest average price that xxSuspect01xx paid, was the ‘right’ 
+price.  A post event analysis, namely of a review of the 2007 Annual Report, and a 
+review of the profit trend, of Company01 did not suggest any discounted or ignored trend7. 
+ 
+Table 8: Price Earnings Ratio (“PER”) of Company01 Shares 
+ 
+Year Net Profit after Tax What investors 
+would have saw 
+at the IPO 
+Price at 35 
+cents 
+2003 S$6.2m               21.2x  37.0x 
+2004 S$12.1m               10.8x  19.0x 
+2005 S$8.5m - 27.0x 
+2006 S$6.2m - 37.0x 
+2007 S$4.1m - 56.0x 
+ 
+ 
+ 
+ 
+27 xxSuspect01xx may have had undisclosed information leading him to believe that Company01 was 
+worth 77% more than its IPO price, but this would be insider trading.  
+                                                 
+7 In fact the reverse was true.  Company01 looked decided expensive at 35 cents with a historic 2005 PER of 27x and 
+a prospective 2006 PER of 37x.  
+ 
+116 
+ 
+ 
+ 
+28 The pattern of xxSuspect01xx’s trades suggests to me the valuation of Company01 may not have 
+been the only or even the primary factor motivating him.  Any investor, even a major 
+shareholder, will want to maximize their profit on their investment.  Thus they would 
+try to keep their cost of purchases low.  xxSuspect01xx appeared determined to do the 
+opposite.  For instance: 
+ 
+a. He did not spread his trades but concentrated them between the 15 February 
+2006 and 31 March 2006 and as shown in the chart below.  Such a concentration 
+of buying could and did have dramatic effects.   As noted in Point 9 and in Chart 
+1, the Shares started to significantly outperform the STI and the SESMANU 
+around February and March 2006 and during xxSuspect01xx’s initial purchasing spree.  
+As a result the average cost that xxSuspect01xx paid would have been higher than one 
+paid by a prudent investor seeking to maximize returns; 
+ 
+Chart 9: Pattern of xxSuspect01xx’s trading during the Relevant Period 
+ 
+ 
+ 
+ 
+b. xxSuspect01xx started buying the Shares, after having made no trades between the 3 
+April 2006 and the 15 May 2006, on the 16 May 2006.  As noted in Point 10, 
+between 15 May 2006 and 14 June 2006, the STI and the SESMANU declined 
+by 9% and 14%.  xxSuspect01xx’s initial purchases at around 31 cents could arguably 
+be said to make sense given the decline of Company01 Shares from above 34 cents.   
+xxSuspect01xx’s later purchases at around 33 cents and 33.5 cents, given the market 
+correction, do not.  It is difficult to understand why xxSuspect01xx did not spread his 
+buying over more days to achieve lower buying costs. 
+ 
+c. An investor seeking to minimize cost: would not bias his trades towards the 
+afternoon session but would spread his trades evenly throughout the day.  This 
+is because to do so would result in afternoon session and closing price rising 
+and thus increasing the cost for the following day’s purchases.  As evidenced in 
+ -
+ 500,000
+ 1,000,000
+ 1,500,000
+ 2,000,000
+ 2,500,000
+ 3,000,000
+ 3,500,000
+ 4,000,000
+xxSuspect01xx's Buying Pattern
+ 
+117 
+ 
+ 
+Point 13, xxSuspect01xx biased his trades towards the afternoon and pre-close trading 
+sessions. 
+ 
+d. An investor seeking to minimize cost would not aggressively seek to execute the 
+last trade or aggressively trade in the pre-close.  This is because to do so would 
+result in the closing price rising and thus increasing the cost for the following 
+day’s purchases.  Point 14 clearly shows that by biasing his trades towards the 
+afternoon session and aggressively seeking to execute the last trade and trade 
+in the pre-close, xxSuspect01xx significantly increased his pricing risk (the spread was 
+larger) and paid more.   
+ 
+29 I believe that I have demonstrated in Points 5 to 20 that xxSuspect01xx’s actions 
+significantly impacted the price of, the traded volume of and thus the market for the 
+Shares.   In Points 21 to 28 I considered the likely actions and resulting trading 
+pattern of a major shareholder of a relatively recent listed company and that of a 
+prudent investor and compared them to xxSuspect01xx’s actions and trading pattern.  
+Having done so, I find it difficult to escape the conclusion that xxSuspect01xx intended to 
+affect the price of Company01 Shares.  xxSuspect01xx knew or should have known that his trading 
+pattern would significant impact the price of Company01 Shares.  xxSuspect01xx knew or should 
+have known that his actions would cause the price of Company01 Shares to rise significantly 
+thereby creating a misleading appearance in the price of Company01 Shares. 
+ 
+Please do not hesitate to contact me if you require any clarification or have any questions or 
+comments.  Thanking you for your attention. 
+ 
+ 
+Yours Sincerely 
+ 
+_________________________ 
+xxOtherNamexx,   
+Partner

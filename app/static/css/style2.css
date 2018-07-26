@@ -1,0 +1,447 @@
+body {
+	height:100%;
+}
+
+.leftnavbar {
+	position: fixed;
+	top:0;
+	width: 150px;
+	height: 100%;
+	/*background: -webkit-linear-gradient(left, #0070C0, white) fixed;*/
+	background: linear-gradient(to right, #0070C0 , white);
+}
+
+.new_sidebar {
+	/*width: 150px;*/
+	min-height: 100%;
+	/*background: linear-gradient(to right, #0070C0 , white);*/
+}
+
+.side_affected_content {
+	padding-left: 15vw;
+}
+
+/*Reports Page*/
+	.leftbox {
+	/*	border-style: solid;
+		border-color: black;
+		border-width: 2px;*/
+
+		height: 900px;
+		width: 95%;
+		overflow: scroll;
+	}
+
+	.rightbox {
+		/*border-style: solid;
+		border-color: black;
+		border-width: 2px;*/
+
+		height: 900px;
+		width: 100%;
+		overflow: scroll;
+	}
+
+
+
+	/*Sankey CSS*/
+		.node rect {
+			  cursor: move;
+			  fill-opacity: .2;
+			  shape-rendering: crispEdges;
+			}
+
+		.node rect:hover {
+			  fill-opacity: 1;
+			}
+
+		.selected rect{
+			  fill-opacity: 1;
+			}
+
+		.node text {
+		  font-size: 1.2rem;
+		  font-weight: bold;
+		  pointer-events: none;
+		  text-shadow: 0 1px 0 #fff;
+		}
+
+		#node_0 {
+			fill:red;
+		}
+
+		.link {
+		  fill: none;
+		  stroke: #000;
+		  stroke-opacity: .2;
+		}
+
+		.link:hover {
+		  stroke-opacity: .5;
+		}
+
+		.link.selected {
+			stroke-opacity: .5;
+		}
+
+	/*Sankey CSS -End-*/
+
+	/*Tagged Sentences Box*/
+		/*.candidate_sentence {
+
+			color: black;
+			font-family: Arial;
+			text-align: left;
+			cursor: pointer;
+		    position: relative;
+		    padding: 12px 8px 12px 40px;
+		    background: #eee;
+		    font-size: 18px;
+		    transition: 0.2s;
+
+		    make the list items unselectable
+		    -webkit-user-select: none;
+		    -moz-user-select: none;
+		    -ms-user-select: none;
+		    user-select: none;
+		}*/
+		.candidate_sentence {
+			padding: 12px 40px 18px 40px;
+			font-size: 0.9rem;
+		}
+
+		.unlabelled_sentence {
+			
+			padding: 12px 40px 18px 40px;
+			font-size: 0.9rem;
+		}
+
+		#tagslist .candidate_sentence:nth-child(odd) {
+			background: #D6E7F4;
+		}
+
+		#tagslist .unlabelled_sentence:nth-child(odd) {
+			background: rgba(140,86,75,0.5);
+		}
+
+		#tagslist div:hover {
+		    background: #ddd;
+		}
+	/*Tagged Sentences Box -End-*/
+/*Reports Page -End-*/
+
+
+.fakeimg {
+  height: 200px;
+  background: #aaa;
+}
+.navbar {
+	background: linear-gradient(to right, #003F77 , #0072CE);
+	padding: : 1rem;
+}
+.navbar-brand {
+  color: #FFB600;
+  font-family: Graphik Super, Arial, Helvetica, sans-serif;
+  font-size: 2.3rem;
+}
+.box-shadow {
+	box-shadow: 0 0.25rem 3rem rgba(0, 0, 0, .6);
+}
+.accentureicon {
+	height: 3.4rem;
+	margin-left: auto;
+	margin-right: 8px;
+	vertical-align: center;
+}
+
+/*Home Page*/
+	.titletext {
+		position: relative;
+		top: 30px;
+		font-family: Graphik, Arial, Helvetica, sans-serif;
+		/*font-size: 50px;*/
+		font-weight: bold;
+		color: #FF9500;
+		text-align: center;
+		vertical-align: middle;
+		margin-bottom: 70px;
+	}
+
+	.linkbutton {
+
+		/*width: 320px;*/
+		/*height: 420px;*/
+		/*border-style: solid;
+		border-color: #0070C0;*/
+		/*margin: 40px;*/
+		color: #0070C0;
+		text-align: center;
+		vertical-align: bottom;
+		font-family: Graphik Light, Arial, Helvetica, sans-serif;
+		font-size: 20px;
+	}
+	.circlelogo {
+		width: 100%;
+		margin-bottom: 20px;
+	}
+/*Home Page -End-*/
+
+
+/*Annotations Page*/
+
+	/*Prodigy NavBar*/
+		.p_sidebar_container {
+			height: calc(100vh - 80px);
+			background: rgb(84, 96, 110);
+			font-family: Lato, "Trebuchet MS", Roboto, Helvetica, Arial, sans-serif;
+		}
+
+		.p_navheader {
+			color: white;
+			background: rgb(56, 68, 81);
+			font-family: Lato, "Trebuchet MS", Roboto, Helvetica, Arial, sans-serif;
+			font-size: 16px;
+		}
+
+		.p_sect {
+			padding: 0px 1rem 1rem;
+			border-bottom: 1px solid rgb(56, 68, 81);
+		}
+
+		.p_progress_wrap {
+			margin: 3px 15px 0 0;
+			height: 12px;
+		    background: rgb(56, 68, 81);
+		}
+
+		.p_progress_bar_inner {
+			width: 23%;
+		}
+
+		.drop_section {
+			font-family: Lato, "Trebuchet MS", Roboto, Helvetica, Arial, sans-serif;
+			font-size: 0.9rem;
+		}
+
+		.p_dropbox {
+			height: 2rem;
+			font-size: 0.8rem;
+		}
+
+		.p_textdiv_sect {
+			display: flex;
+			justify-content: space-between;
+			margin-top:3px;
+			color:white;
+			font-size: 0.8rem;
+			font-family: Lato, "Trebuchet MS", Roboto, Helvetica, Arial, sans-serif;
+		}
+
+		/*.prodigy_context_sents_flexcontainer {}*/
+			
+	/*Prodigy NavBar*/
+
+	/*Prodigy Leftbox Col*/
+		.prodigy_textbox {
+			box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+		}
+
+		.context_title {
+			color: rgb(255,255,255);
+			font: bold 20px "Roboto Condensed", "Arial Narrow", sans-serif;
+		    text-transform: uppercase;
+			padding: 15px 2rem;
+			background: rgb(88, 63, 207);
+			box-sizing: border-box;
+		    border-width: 0;
+		}
+
+		.current_sentence {
+			color: rgb(68,68,68);
+			line-height: 1.5;
+			font-family: Lato, "Trebuchet MS", Roboto, Helvetica, Arial, sans-serif;
+		    word-wrap: break-word;
+		    white-space: pre-wrap;
+		    padding: 2rem;
+		    /*font-size: 2.4rem;*/
+		    font-size: 1.1rem;
+		    box-sizing: border-box;
+		    border-width: 0;
+		}
+	/*Prodigy Leftbox Col*/
+	
+	/*Prodigy Rightbox Col*/
+		.text_view_window {
+			border-style: solid;
+			border-width: 2px;
+			border-color: black;
+			position: absolute;
+			height: 90%;
+			width: 90%;
+			overflow: auto;
+			background: #F1F1F1;
+			box-sizing: border-box;
+		}
+
+		.text_doc {
+			position: absolute;
+			box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+		}
+
+		.text_doc_content {
+			font-size: 0.85rem;
+			padding-top: 50px;
+			padding-left: 45px;
+			padding-right: 30px;
+			white-space: pre-wrap;
+		}
+	/*Prodigy Rightbox Col*/
+
+	/*Prodigy Bottom Buttons*/
+		.prodigybuttonsflexcontainer {
+			height: 104px;
+		    outline: 0px;
+		}
+		.accept {
+			background: rgb(79, 211, 100);
+			height: 80%;
+			width: 10%;
+			box-sizing: content-box;
+			display: inline-block;
+			color: rgb(255,255,255);
+		}
+		.reject {
+			background: rgb(247, 76, 74);
+			height: 80%;
+			width: 10%;
+			box-sizing: content-box;
+			display: inline-block;
+			color: rgb(255,255,255);
+		}
+		.ignore {
+			background: rgb(185, 185, 185);
+			height: 80%;
+			width: 10%;
+			box-sizing: content-box;
+			display: inline-block;
+			color: rgb(255,255,255);
+		}
+		.undo {
+			background: rgb(185, 185, 185);
+			height: 80%;
+			width: 10%;
+			box-sizing: content-box;
+			display: inline-block;
+			color: rgb(255,255,255);
+		}
+		.approveall {
+			/*background: #309056;*/
+			background: #0F72CC;
+			height: 80%;
+			width: 10%;
+			box-sizing: content-box;
+			display: inline-block;
+			color: rgb(255,255,255);
+		}
+	/*Prodigy Bottom Buttons*/
+
+	/*highlighting word doc*/
+
+		.highlight {
+			background-color: yellow;
+		}
+
+		.accepted {
+			background-color: #4FD364;
+		}
+		.rejected {
+			background-color: #F74C4A;
+		}
+		.ignored {
+			background-color: #B9B9B9;
+		}
+	/*highlighting word doc -End-*/
+
+/*Annotations Page -End-*/
+
+/*Models Page*/
+
+/*Models Page -End-*/
+
+
+/*Events Page*/
+
+	/*navbar*/
+
+	/*navbar*/
+
+	/*HighCharts*/
+		rect.bordered {
+	        stroke: #E6E6E6;
+	        stroke-width:2px;   
+	      }
+
+	      text.mono {
+	        font-size: 9pt;
+	        font-family: Consolas, courier;
+	        fill: #aaa;
+	      }
+
+	      text.axis-workweek {
+	        fill: #000;
+	      }
+
+	      text.axis-worktime {
+	        fill: #000;
+	      }
+
+		/*.highcharts-range-selector {
+	      	margin-right: 0;
+	      }*/
+	/*HighCharts*/
+
+		.events_card {
+			padding: 10px 40px 12px 40px;
+			font-size: 12px;
+		}
+
+		#eventslist div:nth-child(odd) {
+			background: #D6E7F4;
+		}
+
+		#eventslist div:hover {
+		    background: #ddd;
+		}
+
+		.table-striped > tbody > tr:nth-child(2n+1) > td, .table-striped > tbody > tr:nth-child(2n+1) > th {
+		   background-color: #D6E7F4;
+		}
+
+		.table td, .table th {
+			padding: .5rem;
+			font-size: 14px;			
+		}
+
+		.reasonscard {
+			padding: 10px 40px 12px 40px;
+			font-size: 14px;
+		}
+
+		#pos_reasonslist div:nth-child(odd) {
+			background: #C2E58C;
+		}
+
+		#pos_reasonslist div:hover {
+		    background: #ddd;
+		}
+
+		#neg_reasonslist div:nth-child(odd) {
+			background: #FEE6E3;
+		}
+
+		#neg_reasonslist div:hover {
+		    background: #ddd;
+		}
+
+		
+/*Events Page -End-*/
